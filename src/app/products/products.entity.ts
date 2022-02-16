@@ -10,8 +10,8 @@ import {
 } from 'typeorm';
 import { DiscountsEntity } from '../discounts/discounts.entity';
 import { OrdersEntity } from '../orders/orders.entity';
-import { Section } from './enum/section.enum';
-import { Size } from './enum/size.enum';
+import { Section } from '../../config/enum/section.enum';
+import { Size } from '../../config/enum/size.enum';
 
 @Entity({ name: 'products' })
 export class ProductsEntity {

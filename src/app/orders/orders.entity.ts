@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 import { ProductsEntity } from '../products/products.entity';
 import { UsersEntity } from '../users/users.entity';
-import { Payment } from './enum/payment.enum';
+import { Payment } from '../../config/enum/payment.enum';
 
 @Entity({ name: 'orders' })
 export class OrdersEntity {

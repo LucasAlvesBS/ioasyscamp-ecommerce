@@ -10,7 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
-import { Role } from './enum/role.enum';
+import { Role } from '../../config/enum/role.enum';
 import { OrdersEntity } from '../orders/orders.entity';
 import { AddressesEntity } from '../addresses/addresses.entity';
 

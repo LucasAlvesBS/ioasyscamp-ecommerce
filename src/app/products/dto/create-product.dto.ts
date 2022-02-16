@@ -1,8 +1,8 @@
 import { IsEnum, IsNotEmpty, Matches, Min } from 'class-validator';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
-import { Section } from '../enum/section.enum';
-import { Size } from '../enum/size.enum';
+import { Section } from '../../../config/enum/section.enum';
+import { Size } from '../../../config/enum/size.enum';
 
 export class CreateProductDto {
   @IsNotEmpty()

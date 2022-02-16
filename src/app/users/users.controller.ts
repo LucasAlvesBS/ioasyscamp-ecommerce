@@ -12,8 +12,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { Roles } from './decorator/role.decorator';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Role } from '../../config/enum/role.enum';
 import { UsersService } from './users.service';
 
 @Controller('api/v1/users')
@@ -26,6 +28,7 @@ export class UsersController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Roles(Role.USER)
   @Get(':username')
   async getProfile(@Param('username') username: string) {
     return await this.userService.checkUser({ username });
@@ -37,6 +40,7 @@ export class UsersController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Roles(Role.USER)
   @Patch(':username')
   async updateProfile(
     @Param('username') username: string,

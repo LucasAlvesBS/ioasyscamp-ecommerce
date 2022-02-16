@@ -1,5 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { MessageHelper } from 'src/helpers/message.helper';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -43,11 +49,16 @@ export class UsersService {
   }
 
   async createUser(data: CreateUserDto) {
-    /* const { email } = data;
-    const verifyUser = this.userRepository.find({ email });
+    const { email } = data;
+    const verifyUser = await this.userRepository.findOne({
+      email,
+    });
     if (verifyUser) {
-      throw new HttpException('User already exist', HttpStatus.BAD_REQUEST);
-    } */
+      throw new HttpException(
+        MessageHelper.EMAIL_INVALID,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
 
     const user = this.userRepository.create(data);
     return await this.userRepository.save(user);

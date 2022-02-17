@@ -5,7 +5,9 @@ import {
   MinLength,
   MaxLength,
   IsOptional,
+  IsEnum,
 } from 'class-validator';
+import { Role } from 'src/config/enum/role.enum';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
 
@@ -42,4 +44,7 @@ export class CreateUserDto {
 
   @IsOptional()
   gender: string;
+
+  @IsEnum(Role)
+  role: Role;
 }

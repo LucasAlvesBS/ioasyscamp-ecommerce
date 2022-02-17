@@ -11,6 +11,7 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { OrdersModule } from 'src/app/orders/orders.module';
 import { ProductsModule } from 'src/app/products/products.module';
+import { RolesGuard } from './guards/roles.guard';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { ProductsModule } from 'src/app/products/products.module';
     JwtStrategy,
     LocalAuthGuard,
     JwtAuthGuard,
+    RolesGuard,
   ],
 })
 export class AuthModule {}

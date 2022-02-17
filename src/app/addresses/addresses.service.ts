@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { AddressesEntity } from './addresses.entity';
 import { CreateAddressDto } from './dto/create-address.dto';
 import { UpdateAddressDto } from './dto/update-address.dto';
@@ -12,6 +12,17 @@ export class AddressesService {
     private readonly addressRepository: Repository<AddressesEntity>,
   ) {}
 
+  async findOneAddress(
+    conditions: FindConditions<AddressesEntity>,
+    options?: FindOneOptions<AddressesEntity>,
+  ) {
+    try {
+      return await this.addressRepository.findOneOrFail(conditions, options);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
+  }
+
   async createAddress(data: CreateAddressDto) {
     const address = this.addressRepository.create(data);
     return await this.addressRepository.save(address);
@@ -21,5 +32,10 @@ export class AddressesService {
     const address = await this.addressRepository.findOneOrFail({ id });
     this.addressRepository.merge(address, data);
     return await this.addressRepository.save(address);
+  }
+
+  async deleteAddress(id: string) {
+    await this.addressRepository.findOneOrFail({ id });
+    this.addressRepository.softDelete({ id });
   }
 }

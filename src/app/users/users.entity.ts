@@ -10,9 +10,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
-import { Role } from '../../config/enum/role.enum';
 import { OrdersEntity } from '../orders/orders.entity';
 import { AddressesEntity } from '../addresses/addresses.entity';
+import { Role } from 'src/config/enum/role.enum';
 
 @Entity({ name: 'users' })
 export class UsersEntity {
@@ -46,7 +46,7 @@ export class UsersEntity {
   @OneToOne(() => AddressesEntity, (address) => address.user, { eager: true })
   address: AddressesEntity;
 
-  @Column({ type: 'enum', enum: Role, default: Role.USER })
+  @Column({ type: 'enum', enum: Role, default: Role.User })
   role: Role;
 
   @OneToMany(() => OrdersEntity, (order) => order.user, { eager: true })

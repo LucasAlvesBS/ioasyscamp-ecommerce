@@ -11,27 +11,30 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
+import { Roles } from 'src/auth/decorator/role.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { Roles } from './decorator/role.decorator';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Role } from 'src/config/enum/role.enum';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { Role } from '../../config/enum/role.enum';
 import { UsersService } from './users.service';
 
 @Controller('api/v1/users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
+  @Roles(Role.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   async findAllUsers() {
     return await this.userService.findAllUsers();
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Roles(Role.USER)
+  @Roles(Role.Admin, Role.User)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':username')
   async getProfile(@Param('username') username: string) {
-    return await this.userService.checkUser({ username });
+    return await this.userService.getProfile({ username });
   }
 
   @Post('register')
@@ -39,24 +42,18 @@ export class UsersController {
     return await this.userService.createUser(body);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Roles(Role.USER)
-  @Patch(':username')
+  @Roles(Role.Admin, Role.User)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Patch(':id')
   async updateProfile(
-    @Param('username') username: string,
+    @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateUserDto,
   ) {
-    return await this.userService.updateUser(username, body);
+    return await this.userService.updateUser(id, body);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Delete(':username')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  async deleteProfile(@Param('username') username: string) {
-    await this.userService.deleteUser(username);
-  }
-
-  @UseGuards(JwtAuthGuard)
+  @Roles(Role.Admin, Role.User)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async adminDeleteUser(@Param('id', new ParseUUIDPipe()) id: string) {

@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { DiscountsEntity } from './discounts.entity';
 import { CreateDiscountDto } from './dto/create-discount.dto';
 import { UpdateDiscountDto } from './dto/update-discount.dto';
@@ -16,6 +16,17 @@ export class DiscountsService {
     return await this.discountRepository.find({
       select: ['id', 'percentage', 'active'],
     });
+  }
+
+  async findOneDiscount(
+    conditions: FindConditions<DiscountsEntity>,
+    options?: FindOneOptions<DiscountsEntity>,
+  ) {
+    try {
+      return await this.discountRepository.findOneOrFail(conditions, options);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   async createDiscount(data: CreateDiscountDto) {

@@ -19,9 +19,7 @@ export class UsersService {
   ) {}
 
   async findAllUsers() {
-    return await this.userRepository.find({
-      select: ['id', 'firstName', 'lastName', 'email'],
-    });
+    return await this.userRepository.find();
   }
 
   async getProfile(
@@ -30,7 +28,7 @@ export class UsersService {
   ) {
     try {
       return await this.userRepository.findOneOrFail(conditions, {
-        select: ['id', 'firstName', 'lastName', 'email'],
+        select: ['id', 'firstName', 'lastName', 'email', 'role'],
       });
     } catch (error) {
       throw new NotFoundException(error.message);

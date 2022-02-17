@@ -11,7 +11,10 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
+import { Roles } from 'src/auth/decorator/role.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Role } from 'src/config/enum/role.enum';
 import { DiscountsService } from './discounts.service';
 import { CreateDiscountDto } from './dto/create-discount.dto';
 import { UpdateDiscountDto } from './dto/update-discount.dto';
@@ -25,13 +28,20 @@ export class DiscountsController {
     return await this.discountService.findAllDiscounts();
   }
 
-  @UseGuards(JwtAuthGuard)
+  @Get(':id')
+  async findOneDiscount(@Param('id') id: string) {
+    return await this.discountService.findOneDiscount({ id });
+  }
+
+  @Roles(Role.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
   async createDiscount(@Body() body: CreateDiscountDto) {
     return await this.discountService.createDiscount(body);
   }
 
-  @UseGuards(JwtAuthGuard)
+  @Roles(Role.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')
   async updateDiscount(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -40,7 +50,8 @@ export class DiscountsController {
     return await this.discountService.updateDiscount(id, body);
   }
 
-  @UseGuards(JwtAuthGuard)
+  @Roles(Role.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async deleteDiscount(@Param('id', new ParseUUIDPipe()) id: string) {

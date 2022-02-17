@@ -4,4 +4,5 @@ export enum Size {
   M = 'M',
   G = 'G',
   GG = 'GG',
+  EGG = 'EGG',
 }

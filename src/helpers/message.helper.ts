@@ -17,5 +17,5 @@ export const MessageHelper = {
   SECTION_VALID: 'section must be masculine, feminine or kids',
   PERCENTAGE_VALID: 'percentage must be integer numbers with the symbol %',
   ZIP_CODE_VALID: 'zipCode is invalid',
-  EMAIL_INVALID: 'invalid informatiob',
+  EMAIL_INVALID: 'invalid informations',
 };

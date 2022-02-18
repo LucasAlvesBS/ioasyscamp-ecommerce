@@ -18,4 +18,5 @@ export const MessageHelper = {
   PERCENTAGE_VALID: 'percentage must be integer numbers with the symbol %',
   ZIP_CODE_VALID: 'zipCode is invalid',
   EMAIL_INVALID: 'invalid informations',
+  SIZE_VALID: 'size must be PP, P, M, G, GG or EGG',
 };

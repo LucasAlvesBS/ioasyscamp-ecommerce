@@ -9,9 +9,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { UsersEntity } from 'src/entities/users.entity';
-import { Payment } from 'src/config/enum/payment.enum';
-import { ProductsEntity } from 'src/entities/products.entity';
+import { ProductsEntity } from '../products/products.entity';
+import { UsersEntity } from '../users/users.entity';
+import { Payment } from '../../config/enum/payment.enum';
 
 @Entity({ name: 'orders' })
 export class OrdersEntity {

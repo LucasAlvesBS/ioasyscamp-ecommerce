@@ -1,8 +1,8 @@
 import { IsEnum, IsNotEmpty } from 'class-validator';
-import { Payment } from 'src/config/enum/payment.enum';
-import { ProductsEntity } from 'src/entities/products.entity';
-import { UsersEntity } from 'src/entities/users.entity';
+import { ProductsEntity } from 'src/app/products/products.entity';
+import { UsersEntity } from 'src/app/users/users.entity';
 import { MessageHelper } from 'src/helpers/message.helper';
+import { Payment } from '../../../config/enum/payment.enum';
 
 export class CreateOrderDto {
   @IsNotEmpty()

@@ -16,12 +16,6 @@ import { AddressesModule } from './app/addresses/addresses.module';
       url: process.env.DATABASE_URL,
       entities: [__dirname + '/**/*.entity{.js,.ts}'],
       synchronize: true,
-      //entities: ['src/app/**/*.entity.ts'],
-      //migrations: ['src/typeorm/migrations/*.ts'],
-      //cli: {
-      //entitiesDir: 'src/app/',
-      //migrationsDir: 'src/typeorm/migrations',
-      //},
     } as TypeOrmModuleOptions),
     UsersModule,
     AuthModule,

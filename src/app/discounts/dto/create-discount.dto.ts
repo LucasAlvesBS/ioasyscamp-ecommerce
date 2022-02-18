@@ -1,5 +1,5 @@
 import { IsArray, IsBoolean, IsNotEmpty, Matches } from 'class-validator';
-import { ProductsEntity } from 'src/app/products/products.entity';
+import { ProductsEntity } from 'src/entities/products.entity';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
 

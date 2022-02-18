@@ -10,9 +10,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
-import { OrdersEntity } from '../orders/orders.entity';
-import { AddressesEntity } from '../addresses/addresses.entity';
 import { Role } from 'src/config/enum/role.enum';
+import { AddressesEntity } from 'src/entities/addresses.entity';
+import { OrdersEntity } from 'src/entities/orders.entity';
 
 @Entity({ name: 'users' })
 export class UsersEntity {

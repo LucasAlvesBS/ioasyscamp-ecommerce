@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { DiscountsEntity } from 'src/entities/discounts.entity';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
-import { DiscountsEntity } from './discounts.entity';
 import { CreateDiscountDto } from './dto/create-discount.dto';
 import { UpdateDiscountDto } from './dto/update-discount.dto';
 

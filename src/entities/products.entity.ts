@@ -1,3 +1,7 @@
+import { DiscountsEntity } from 'src/entities/discounts.entity';
+import { OrdersEntity } from 'src/entities/orders.entity';
+import { Section } from 'src/config/enum/section.enum';
+import { Size } from 'src/config/enum/size.enum';
 import {
   Column,
   CreateDateColumn,
@@ -8,10 +12,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { DiscountsEntity } from '../discounts/discounts.entity';
-import { OrdersEntity } from '../orders/orders.entity';
-import { Section } from '../../config/enum/section.enum';
-import { Size } from '../../config/enum/size.enum';
 
 @Entity({ name: 'products' })
 export class ProductsEntity {

@@ -1,3 +1,4 @@
+import { ProductsEntity } from 'src/entities/products.entity';
 import {
   Column,
   CreateDateColumn,
@@ -7,7 +8,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ProductsEntity } from '../products/products.entity';
 
 @Entity({ name: 'discounts' })
 export class DiscountsEntity {

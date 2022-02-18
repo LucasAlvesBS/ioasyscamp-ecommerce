@@ -1,3 +1,4 @@
+import { UsersEntity } from 'src/entities/users.entity';
 import {
   Column,
   CreateDateColumn,
@@ -8,7 +9,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { UsersEntity } from '../users/users.entity';
 
 @Entity({ name: 'addresses' })
 export class AddressesEntity {

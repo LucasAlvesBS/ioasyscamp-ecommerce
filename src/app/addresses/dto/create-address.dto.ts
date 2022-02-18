@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsOptional, Matches } from 'class-validator';
-import { UsersEntity } from 'src/app/users/users.entity';
+import { UsersEntity } from 'src/entities/users.entity';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
 

@@ -59,12 +59,14 @@ export class UsersService {
     }
 
     const user = this.userRepository.create(data);
+    // Colocar o hash da senha aqui
     return await this.userRepository.save(user);
   }
 
   async updateUser(id: string, data: UpdateUserDto) {
     const user = await this.userRepository.findOneOrFail({ id });
     this.userRepository.merge(user, data);
+    // Colocar o hash da senha aqui
     return await this.userRepository.save(user);
   }
 

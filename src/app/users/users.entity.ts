@@ -19,14 +19,11 @@ export class UsersEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ name: 'first_name', length: '50' })
+  @Column({ name: 'first_name', length: '100' })
   firstName: string;
 
-  @Column({ name: 'last_name', length: '50' })
+  @Column({ name: 'last_name', length: '100' })
   lastName: string;
-
-  @Column({ length: '100', unique: true })
-  username: string;
 
   @Column({ length: '255' })
   email: string;
@@ -40,14 +37,14 @@ export class UsersEntity {
   @Column({ length: '100' })
   telephone: string;
 
-  @Column({ length: '50', nullable: true })
+  @Column({ length: '100', nullable: true })
   gender: string;
-
-  @OneToOne(() => AddressesEntity, (address) => address.user, { eager: true })
-  address: AddressesEntity;
 
   @Column({ type: 'enum', enum: Role, default: Role.User })
   role: Role;
+
+  @OneToOne(() => AddressesEntity, (address) => address.user, { eager: true })
+  address: AddressesEntity;
 
   @OneToMany(() => OrdersEntity, (order) => order.user, { eager: true })
   orders: OrdersEntity[];

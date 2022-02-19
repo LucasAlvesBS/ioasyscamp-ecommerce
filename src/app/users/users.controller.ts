@@ -32,9 +32,9 @@ export class UsersController {
 
   @Roles(Role.Admin, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Get(':username')
-  async getProfile(@Param('username') username: string) {
-    return await this.userService.getProfile({ username });
+  @Get(':id')
+  async getProfile(@Param('id') id: string) {
+    return await this.userService.getProfile({ id });
   }
 
   @Post('register')

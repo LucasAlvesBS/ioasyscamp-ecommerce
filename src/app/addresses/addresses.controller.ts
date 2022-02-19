@@ -14,12 +14,12 @@ import {
 import { Roles } from 'src/auth/decorator/role.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { Role } from 'src/config/enum/role.enum';
+import { Role } from '../../config/enum/role.enum';
 import { AddressesService } from './addresses.service';
 import { CreateAddressDto } from './dto/create-address.dto';
 import { UpdateAddressDto } from './dto/update-address.dto';
 
-@Controller('api/vi/addresses')
+@Controller('api/v1/addresses')
 export class AddressesController {
   constructor(private readonly addressService: AddressesService) {}
 

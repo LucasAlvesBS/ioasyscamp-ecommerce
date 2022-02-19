@@ -14,7 +14,7 @@ export class ProductsService {
 
   async findAllProducts() {
     return await this.productRepository.find({
-      select: ['id', 'name', 'size', 'color', 'category', 'price'],
+      select: ['id', 'name', 'size', 'color', 'section', 'price'],
     });
   }
 

@@ -12,11 +12,7 @@ import {
 import { hashSync } from 'bcrypt';
 import { OrdersEntity } from '../orders/orders.entity';
 import { AddressesEntity } from '../addresses/addresses.entity';
-
-export enum Role {
-  User = 'user',
-  Admin = 'admin',
-}
+import { Role } from '../../config/enum/role.enum';
 
 @Entity({ name: 'users' })
 export class UsersEntity {
@@ -44,13 +40,13 @@ export class UsersEntity {
   @Column({ length: '100', nullable: true })
   gender: string;
 
-  @Column({ type: 'enum', enum: Role, default: Role.User })
+  @Column({ type: 'enum', enum: Role, default: Role.User, nullable: true })
   role: Role;
 
   @OneToOne(() => AddressesEntity, (address) => address.user, { eager: true })
   address: AddressesEntity;
 
-  @OneToMany(() => OrdersEntity, (order) => order.user, { eager: true })
+  @OneToMany(() => OrdersEntity, (orders) => orders.user, { eager: true })
   orders: OrdersEntity[];
 
   @CreateDateColumn({ name: 'created_at' })

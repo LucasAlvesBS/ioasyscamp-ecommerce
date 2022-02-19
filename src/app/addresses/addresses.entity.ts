@@ -27,10 +27,10 @@ export class AddressesEntity {
   @Column({ length: '255', nullable: true })
   address2: string;
 
-  @Column({ name: 'zip_code', length: '255' })
+  @Column({ name: 'zip_code' })
   zipCode: string;
 
-  @OneToOne(() => UsersEntity, (user) => user.address)
+  @OneToOne(() => UsersEntity, (user) => user.address, { onDelete: 'CASCADE' }) // Testar direito o Cascade
   @JoinColumn({ name: 'user_id' })
   user: UsersEntity;
 

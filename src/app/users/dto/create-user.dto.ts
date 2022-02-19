@@ -6,9 +6,9 @@ import {
   MaxLength,
   IsOptional,
 } from 'class-validator';
-import { Role } from 'src/config/enum/role.enum';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
+import { Role } from '../../../config/enum/role.enum';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -43,5 +43,6 @@ export class CreateUserDto {
   // A ideia pra se aplicar é retirar a prop 'role', criar um seed pra admin
   // e adicionar um endpoint em que só quem tem o token de admin pode cadastrar outro admin
   // Testar a ideia de colocar 'user.role = 'admin' na hora de criar o user admin da ideia acima
-  role?: Role;
+  @IsOptional()
+  role: Role;
 }

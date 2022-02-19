@@ -7,6 +7,7 @@ import { OrdersModule } from './app/orders/orders.module';
 import { ProductsModule } from './app/products/products.module';
 import { DiscountsModule } from './app/discounts/discounts.module';
 import { AddressesModule } from './app/addresses/addresses.module';
+import { StocksModule } from './app/stocks/stocks.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { AddressesModule } from './app/addresses/addresses.module';
     ProductsModule,
     DiscountsModule,
     AddressesModule,
+    StocksModule,
   ],
   controllers: [],
   providers: [],

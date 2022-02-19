@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
   ManyToOne,
@@ -18,19 +19,17 @@ export class OrdersEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  quantity: number;
-
   @Column({ type: 'enum', enum: Payment })
-  paymentMethods: Payment;
+  payment: Payment;
 
-  @Column()
+  @Column({ name: 'total_cost' })
   totalCost: number; // talvez tenha que tirar
 
   @ManyToOne(() => UsersEntity, (user) => user.orders, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'user_id' })
   user: UsersEntity;
 
-  @ManyToMany(() => ProductsEntity, (product) => product.orders, {
+  @ManyToMany(() => ProductsEntity, (products) => products.orders, {
     eager: true,
   })
   @JoinTable({

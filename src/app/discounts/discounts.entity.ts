@@ -15,12 +15,12 @@ export class DiscountsEntity {
   id: string;
 
   @Column()
-  percentage: string;
+  percentage: number;
 
   @Column()
   active: boolean;
 
-  @OneToMany(() => ProductsEntity, (product) => product.discount, {
+  @OneToMany(() => ProductsEntity, (products) => products.discount, {
     eager: true,
   })
   products: ProductsEntity[];

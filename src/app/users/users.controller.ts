@@ -14,9 +14,9 @@ import {
 import { Roles } from 'src/auth/decorator/role.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { Role } from 'src/config/enum/role.enum';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Role } from '../../config/enum/role.enum';
 import { UsersService } from './users.service';
 
 @Controller('api/v1/users')

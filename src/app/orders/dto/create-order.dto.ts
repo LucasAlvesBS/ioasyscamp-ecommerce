@@ -6,11 +6,8 @@ import { Payment } from '../../../config/enum/payment.enum';
 
 export class CreateOrderDto {
   @IsNotEmpty()
-  quantity: number;
-
-  @IsNotEmpty()
   @IsEnum(Payment, { message: MessageHelper.PAYMENT_VALID })
-  paymentMethods: Payment;
+  payment: Payment;
 
   @IsNotEmpty()
   totalCost: number;

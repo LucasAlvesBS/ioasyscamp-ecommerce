@@ -21,7 +21,7 @@ export class CreateProductDto {
 
   @IsNotEmpty()
   @IsEnum(Section, { message: MessageHelper.SECTION_VALID })
-  category: Section;
+  section: Section;
 
   @IsNotEmpty()
   @Min(0)

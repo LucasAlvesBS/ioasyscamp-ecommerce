@@ -12,7 +12,7 @@ const telephone =
 
 const percentage = /^\d{1,3}\%$/;
 
-const zipCode = /^[0-9]{5}-[0-9]{3}$/;
+const zipCode = /^[0-9]{8}$/;
 
 export const RegExHelper = {
   password,

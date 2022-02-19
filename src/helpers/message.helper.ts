@@ -16,7 +16,7 @@ export const MessageHelper = {
   COLOR_VALID: 'color must be only letters',
   SECTION_VALID: 'section must be masculine, feminine or kids',
   PERCENTAGE_VALID: 'percentage must be integer numbers with the symbol %',
-  ZIP_CODE_VALID: 'zipCode is invalid',
+  ZIP_CODE_VALID: 'zipCode must be only numbers',
   EMAIL_INVALID: 'invalid informations',
   SIZE_VALID: 'size must be PP, P, M, G, GG or EGG',
 };

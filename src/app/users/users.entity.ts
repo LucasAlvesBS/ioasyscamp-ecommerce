@@ -12,7 +12,11 @@ import {
 import { hashSync } from 'bcrypt';
 import { OrdersEntity } from '../orders/orders.entity';
 import { AddressesEntity } from '../addresses/addresses.entity';
-import { Role } from 'src/config/enum/role.enum';
+
+export enum Role {
+  User = 'user',
+  Admin = 'admin',
+}
 
 @Entity({ name: 'users' })
 export class UsersEntity {

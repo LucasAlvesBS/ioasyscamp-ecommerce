@@ -18,6 +18,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Role } from '../../config/enum/role.enum';
 import { UsersService } from './users.service';
+import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 
 @Controller('api/v1/users')
 export class UsersController {
@@ -50,6 +51,16 @@ export class UsersController {
     @Body() body: UpdateUserDto,
   ) {
     return await this.userService.updateUser(id, body);
+  }
+
+  @Roles(Role.Admin, Role.User)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Patch('password/:id')
+  async updateUserPassword(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body() body: UpdateUserPasswordDto,
+  ) {
+    return await this.userService.updateUserPassword(id, body);
   }
 
   @Roles(Role.Admin, Role.User)

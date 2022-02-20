@@ -5,9 +5,11 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { hashSync } from 'bcrypt';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersEntity } from './users.entity';
 
@@ -59,14 +61,23 @@ export class UsersService {
     }
 
     const user = this.userRepository.create(data);
-    // Colocar o hash da senha aqui
     return await this.userRepository.save(user);
   }
 
   async updateUser(id: string, data: UpdateUserDto) {
     const user = await this.userRepository.findOneOrFail({ id });
     this.userRepository.merge(user, data);
-    // Colocar o hash da senha aqui
+    return await this.userRepository.save(user);
+  }
+
+  async updateUserPassword(id: string, data: UpdateUserPasswordDto) {
+    const user = await this.userRepository.findOneOrFail({ id });
+    const password = hashSync(data.password, 10);
+    data = {
+      ...data,
+      password,
+    };
+    this.userRepository.merge(user, data);
     return await this.userRepository.save(user);
   }
 

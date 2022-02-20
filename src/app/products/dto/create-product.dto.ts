@@ -6,7 +6,7 @@ import { Size } from '../../../config/enum/size.enum';
 
 export class CreateProductDto {
   @IsNotEmpty()
-  @Matches(RegExHelper.name, { message: MessageHelper.PRODUCT_NAME_VALID })
+  @Matches(RegExHelper.product, { message: MessageHelper.PRODUCT_NAME_VALID })
   name: string;
 
   @IsNotEmpty()

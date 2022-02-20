@@ -1,7 +1,7 @@
 const password =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 
-const name = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+const name = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\-'/ ]+$/;
 
 const cpf = /([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/;
 
@@ -10,10 +10,13 @@ const telephone =
 
 const zipCode = /^[0-9]{8}$/;
 
+const product = /^[0-9A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\-'/ ]+$/;
+
 export const RegExHelper = {
   password,
   name,
   cpf,
   telephone,
   zipCode,
+  product,
 };

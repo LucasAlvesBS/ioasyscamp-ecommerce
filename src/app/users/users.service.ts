@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hashSync } from 'bcrypt';
+import { Role } from 'src/config/enum/role.enum';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -53,6 +54,7 @@ export class UsersService {
     const verifyUser = await this.userRepository.findOne({
       email,
     });
+
     if (verifyUser) {
       throw new HttpException(
         MessageHelper.EMAIL_INVALID,
@@ -62,6 +64,23 @@ export class UsersService {
 
     const user = this.userRepository.create(data);
     return await this.userRepository.save(user);
+  }
+
+  async createAdmin(data: CreateUserDto) {
+    const { email } = data;
+    const verifyAdmin = await this.userRepository.findOne({
+      email,
+    });
+
+    if (verifyAdmin) {
+      throw new HttpException(
+        MessageHelper.EMAIL_INVALID,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    const admin: UsersEntity = this.userRepository.create(data);
+    admin.role = Role.Admin;
+    return await this.userRepository.save(admin);
   }
 
   async updateUser(id: string, data: UpdateUserDto) {

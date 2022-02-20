@@ -24,7 +24,7 @@ import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
-  @Roles(Role.Admin)
+  @Roles(Role.Manager)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   async findAllUsers() {
@@ -41,6 +41,13 @@ export class UsersController {
   @Post('register')
   async createProfile(@Body() body: CreateUserDto) {
     return await this.userService.createUser(body);
+  }
+
+  @Roles(Role.Manager)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Post('register/admin')
+  async createAdmin(@Body() body: CreateUserDto) {
+    return await this.userService.createAdmin(body);
   }
 
   @Roles(Role.Admin, Role.User)
@@ -63,7 +70,7 @@ export class UsersController {
     return await this.userService.updateUserPassword(id, body);
   }
 
-  @Roles(Role.Admin, Role.User)
+  @Roles(Role.Admin, Role.User, Role.Manager)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)

@@ -3,7 +3,7 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 export class CreateUser1645232300267 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-        CREATE TYPE role_options AS ENUM ('user', 'admin');
+        CREATE TYPE role_options AS ENUM ('user', 'admin', 'manager');
         CREATE TABLE users (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         first_name varchar(100) NOT NULL,

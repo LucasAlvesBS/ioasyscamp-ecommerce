@@ -16,4 +16,5 @@ module.exports = {
     migrationsDir: 'src/config/typeorm/migrations',
   },
   seeds: ['src/config/typeorm/seeds/*.ts'],
+  factories: ['src/config/typeorm/factories/*.ts'],
 };

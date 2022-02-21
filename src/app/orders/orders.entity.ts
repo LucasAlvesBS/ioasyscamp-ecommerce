@@ -19,11 +19,14 @@ export class OrdersEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'enum', enum: Payment })
+  @Column({ type: 'enum', enum: Payment, nullable: false })
   payment: Payment;
 
+  @Column({ name: 'products_quantity' })
+  productsQuantity: number;
+
   @Column({ name: 'total_cost' })
-  totalCost: number; // talvez tenha que tirar
+  totalCost: number;
 
   @ManyToOne(() => UsersEntity, (user) => user.orders, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })

@@ -9,8 +9,8 @@ export class CreateOrderDto {
   @IsEnum(Payment, { message: MessageHelper.PAYMENT_VALID })
   payment: Payment;
 
-  @IsNotEmpty()
-  totalCost: number;
+  //@IsNotEmpty()
+  //totalCost: number;
 
   @IsNotEmpty()
   user: UsersEntity;

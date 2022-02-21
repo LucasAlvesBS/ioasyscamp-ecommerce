@@ -17,11 +17,8 @@ export class StocksEntity {
   @Column({ length: '255' })
   name: string;
 
-  @Column({ name: 'products_quantity' })
-  productsQuantity: number;
-
-  @Column()
-  available: boolean;
+  @Column({ name: 'available_quantity' })
+  availableQuantity: number;
 
   @OneToMany(() => ProductsEntity, (products) => products.stock, {
     eager: true,

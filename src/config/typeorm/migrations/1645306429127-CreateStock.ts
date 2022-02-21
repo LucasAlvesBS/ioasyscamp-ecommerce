@@ -6,8 +6,7 @@ export class CreateStock1645306429127 implements MigrationInterface {
       CREATE TABLE stocks (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         name varchar(255) NOT NULL,
-        products_quantity int NOT NULL,
-        available boolean NOT NULL,
+        available_quantity int DEFAULT 5,
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
         deleted_at timestamp

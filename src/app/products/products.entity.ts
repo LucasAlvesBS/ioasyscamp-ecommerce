@@ -38,18 +38,24 @@ export class ProductsEntity {
   @Column()
   price: number;
 
-  @ManyToMany(() => OrdersEntity, (orders) => orders.products)
-  orders: OrdersEntity[];
+  @Column({ name: 'products_quantity' })
+  productsQuantity: number;
 
-  @ManyToOne(() => DiscountsEntity, (discount) => discount.products)
+  @ManyToOne(() => DiscountsEntity, (discount) => discount.products, {
+    onDelete: 'SET NULL', // olhar direito o SET NULL em discount
+  })
   @JoinColumn({ name: 'discount_id' })
   discount: DiscountsEntity;
 
   @ManyToOne(() => StocksEntity, (stock) => stock.products, {
+    eager: true,
     onDelete: 'SET NULL',
   })
   @JoinColumn({ name: 'stock_id' })
   stock: StocksEntity;
+
+  @ManyToMany(() => OrdersEntity, (orders) => orders.products)
+  orders: OrdersEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;

@@ -1,4 +1,5 @@
 import { IsEnum, IsNotEmpty, Matches, Min } from 'class-validator';
+import { StocksEntity } from 'src/app/stocks/stocks.entity';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
 import { Section } from '../../../config/enum/section.enum';
@@ -26,4 +27,11 @@ export class CreateProductDto {
   @IsNotEmpty()
   @Min(0)
   price: number;
+
+  @IsNotEmpty()
+  @Min(0)
+  productsQuantity: number;
+
+  @IsNotEmpty()
+  stock: StocksEntity;
 }

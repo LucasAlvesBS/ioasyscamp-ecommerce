@@ -10,10 +10,11 @@ export class CreateAddress1645236411166 implements MigrationInterface {
         address1 varchar(255) NOT NULL UNIQUE,
         address2 varchar(255),
         zip_code varchar(8) NOT NULL,
-        user_id UUID REFERENCES users(id),
+        user_id UUID,
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
-        deleted_at timestamp 
+        deleted_at timestamp,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );`);
   }
 

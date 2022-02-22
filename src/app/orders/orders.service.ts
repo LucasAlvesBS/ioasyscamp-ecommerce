@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -24,8 +28,13 @@ export class OrdersService {
   }
 
   async createOrder(data: CreateOrderDto) {
-    const order = this.orderRepository.create(data);
-    return await this.orderRepository.save(order);
+    try {
+      const order = this.orderRepository.create(data);
+      order.orderQuantity = order.products.length;
+      return await this.orderRepository.save(order);
+    } catch (error) {
+      throw new BadRequestException(error.message);
+    }
   }
 
   async updateOrder(id: string, data: UpdateOrderDto) {

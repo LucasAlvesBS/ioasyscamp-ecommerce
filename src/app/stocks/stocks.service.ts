@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindConditions, FindOneOptions, Repository } from 'typeorm';
+import { FindConditions, Repository } from 'typeorm';
 import { CreateStockDto } from './dto/create-stock.dto';
 import { UpdateStockDto } from './dto/update-stock.dto';
 import { StocksEntity } from './stocks.entity';
@@ -16,12 +16,11 @@ export class StocksService {
     return await this.stockRepository.find();
   }
 
-  async findOneStock(
-    conditions: FindConditions<StocksEntity>,
-    options?: FindOneOptions<StocksEntity>,
-  ) {
+  async findOneStock(conditions: FindConditions<StocksEntity>) {
     try {
-      return await this.stockRepository.findOneOrFail(conditions, options);
+      return await this.stockRepository.findOneOrFail(conditions, {
+        select: ['id', 'description', 'availableQuantity'],
+      });
     } catch (error) {
       throw new NotFoundException(error.message);
     }

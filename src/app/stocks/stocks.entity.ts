@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { OrdersEntity } from '../orders/orders.entity';
 import { ProductsEntity } from '../products/products.entity';
 
 @Entity({ name: 'stocks' })
@@ -14,15 +15,16 @@ export class StocksEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: '255' })
-  name: string;
+  @Column()
+  description: string;
 
   @Column({ name: 'available_quantity' })
   availableQuantity: number;
 
-  @OneToMany(() => ProductsEntity, (products) => products.stock, {
-    eager: true,
-  })
+  @OneToMany(() => OrdersEntity, (orders) => orders.stock)
+  orders: OrdersEntity[];
+
+  @OneToMany(() => ProductsEntity, (products) => products.stock)
   products: ProductsEntity[];
 
   @CreateDateColumn({ name: 'created_at' })

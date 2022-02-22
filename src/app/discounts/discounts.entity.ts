@@ -17,9 +17,6 @@ export class DiscountsEntity {
   @Column()
   percentage: number;
 
-  @Column()
-  active: boolean;
-
   @OneToMany(() => ProductsEntity, (products) => products.discount, {
     eager: true,
   })

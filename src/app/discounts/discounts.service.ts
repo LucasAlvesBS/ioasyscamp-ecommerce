@@ -14,7 +14,7 @@ export class DiscountsService {
 
   async findAllDiscounts() {
     return await this.discountRepository.find({
-      select: ['id', 'percentage', 'active'],
+      select: ['id', 'percentage'],
     });
   }
 

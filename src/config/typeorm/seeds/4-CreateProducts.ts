@@ -4,7 +4,7 @@ import { ProductsEntity } from '../../../app/products/products.entity';
 import { Size } from '../../enum/size.enum';
 import { Section } from '../../enum/section.enum';
 
-export default class CreateProducts implements Seeder {
+export default class CreateProduct implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
     await connection
       .createQueryBuilder()
@@ -18,6 +18,7 @@ export default class CreateProducts implements Seeder {
           color: 'black',
           section: Section.Masculine,
           price: 89.99,
+          productsQuantity: 5,
         },
         {
           name: 'jeans',
@@ -26,6 +27,7 @@ export default class CreateProducts implements Seeder {
           color: 'blue',
           section: Section.Feminine,
           price: 79.99,
+          productsQuantity: 5,
         },
         {
           name: 'shirt',
@@ -34,6 +36,7 @@ export default class CreateProducts implements Seeder {
           color: 'green',
           section: Section.Kids,
           price: 45.99,
+          productsQuantity: 5,
         },
         {
           name: 'pants',
@@ -42,6 +45,7 @@ export default class CreateProducts implements Seeder {
           color: 'purple',
           section: Section.Masculine,
           price: 93.5,
+          productsQuantity: 5,
         },
         {
           name: 'skirt',
@@ -50,6 +54,7 @@ export default class CreateProducts implements Seeder {
           color: 'brown',
           section: Section.Feminine,
           price: 49.99,
+          productsQuantity: 5,
         },
       ])
       .execute();

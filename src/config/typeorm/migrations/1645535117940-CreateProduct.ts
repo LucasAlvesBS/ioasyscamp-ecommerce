@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class CreateProduct1645306477637 implements MigrationInterface {
+export class CreateProduct1645535117940 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
     CREATE TYPE size_options AS ENUM ('PP', 'P', 'M', 'G', 'GG', 'EGG');
@@ -13,11 +13,14 @@ export class CreateProduct1645306477637 implements MigrationInterface {
         color varchar(100) NOT NULL,
         section section_options NOT NULL,
         price decimal NOT NULL,
-        discount_id UUID REFERENCES discounts(id),
-        stock_id UUID REFERENCES stocks(id),
+        products_quantity int NOT NULL, 
+        discount_id UUID,
+        stock_id UUID,
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
-        deleted_at timestamp 
+        deleted_at timestamp,
+        FOREIGN KEY (discount_id) REFERENCES discounts(id) ON DELETE SET NULL,
+        FOREIGN KEY (stock_id) REFERENCES stocks(id) ON DELETE SET NULL
     );`);
   }
 

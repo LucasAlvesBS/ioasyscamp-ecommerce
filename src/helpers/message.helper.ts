@@ -4,8 +4,8 @@ export const MessageHelper = {
   FIRST_NAME_VALID:
     'firstName must be only letters, hyphen and/or single quotes',
   LAST_NAME_VALID: 'lastName must be only letters, hyphen and/or single quotes',
-  STOCK_NAME_VALID:
-    'stock name must be only letters, hyphen and/or single quotes',
+  STOCK_DESCRIPTION_VALID:
+    'stock description must be only letters, hyphen and/or single quotes',
   PASSWORD_OR_EMAIL_INVALID: 'invalid credentials',
   PASSWORD_MIN_VALID: 'password must be at least 8 characters',
   PASSWORD_MAX_VALID: 'password must be a maximum of 30 characters',

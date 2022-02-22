@@ -30,7 +30,7 @@ export class AddressesEntity {
   @Column({ name: 'zip_code' })
   zipCode: string;
 
-  @OneToOne(() => UsersEntity, (user) => user.address, { onDelete: 'CASCADE' }) // Testar direito o Cascade
+  @OneToOne(() => UsersEntity, (user) => user.address, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user: UsersEntity;
 

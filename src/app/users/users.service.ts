@@ -25,10 +25,7 @@ export class UsersService {
     return await this.userRepository.find();
   }
 
-  async getProfile(
-    conditions: FindConditions<UsersEntity>,
-    //options?: FindOneOptions<UsersEntity>,
-  ) {
+  async getProfile(conditions: FindConditions<UsersEntity>) {
     try {
       return await this.userRepository.findOneOrFail(conditions, {
         select: ['id', 'firstName', 'lastName', 'email', 'role'],

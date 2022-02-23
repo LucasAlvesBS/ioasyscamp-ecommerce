@@ -12,7 +12,7 @@ export class CreateProduct1645535117940 implements MigrationInterface {
         size size_options NOT NULL,
         color varchar(100) NOT NULL,
         section section_options NOT NULL,
-        price decimal NOT NULL,
+        price decimal(10, 2) NOT NULL,
         products_quantity int NOT NULL, 
         discount_id UUID,
         stock_id UUID,

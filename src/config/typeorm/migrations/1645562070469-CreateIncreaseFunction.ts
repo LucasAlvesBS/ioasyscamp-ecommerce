@@ -9,7 +9,7 @@ export class CreateIncreaseFunction1645562070469 implements MigrationInterface {
       BEGIN
         UPDATE stocks SET available_quantity = available_quantity + NEW.products_quantity
           WHERE id = NEW.stock_id;
-        return NEW;
+        RETURN NEW;
       END
       $$ LANGUAGE plpgsql;
     `);

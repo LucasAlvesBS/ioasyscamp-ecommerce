@@ -7,7 +7,7 @@ export class CreateDecreaseTrigger1645550246533 implements MigrationInterface {
       BEFORE INSERT ON orders
       FOR EACH ROW
       EXECUTE PROCEDURE decrease_stock();
-      `);
+    `);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

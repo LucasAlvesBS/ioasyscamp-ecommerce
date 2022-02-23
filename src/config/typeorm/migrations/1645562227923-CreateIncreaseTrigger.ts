@@ -7,7 +7,7 @@ export class CreateIncreaseTrigger1645562227923 implements MigrationInterface {
       BEFORE INSERT ON products
       FOR EACH ROW
       EXECUTE PROCEDURE increase_stock();
-      `);
+    `);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

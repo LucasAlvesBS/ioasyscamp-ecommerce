@@ -80,6 +80,23 @@ export class UsersService {
     return await this.userRepository.save(admin);
   }
 
+  async createManager(data: CreateUserDto) {
+    const { email } = data;
+    const verifyManager = await this.userRepository.findOne({
+      email,
+    });
+
+    if (verifyManager) {
+      throw new HttpException(
+        MessageHelper.EMAIL_INVALID,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    const manager: UsersEntity = this.userRepository.create(data);
+    manager.role = Role.Manager;
+    return await this.userRepository.save(manager);
+  }
+
   async updateUser(id: string, data: UpdateUserDto) {
     const user = await this.userRepository.findOneOrFail({ id });
     this.userRepository.merge(user, data);

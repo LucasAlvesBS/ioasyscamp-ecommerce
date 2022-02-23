@@ -50,6 +50,13 @@ export class UsersController {
     return await this.userService.createAdmin(body);
   }
 
+  @Roles(Role.Manager)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Post('register/manager')
+  async createManager(@Body() body: CreateUserDto) {
+    return await this.userService.createAdmin(body);
+  }
+
   @Roles(Role.Admin, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')

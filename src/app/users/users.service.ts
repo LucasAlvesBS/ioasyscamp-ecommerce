@@ -28,7 +28,7 @@ export class UsersService {
   async getProfile(conditions: FindConditions<UsersEntity>) {
     try {
       return await this.userRepository.findOneOrFail(conditions, {
-        select: ['id', 'firstName', 'lastName', 'email', 'role'],
+        select: ['id', 'firstName', 'lastName', 'email', 'ordersMade', 'role'],
       });
     } catch (error) {
       throw new NotFoundException(error.message);

@@ -40,6 +40,9 @@ export class UsersEntity {
   @Column({ length: '100', nullable: true })
   gender: string;
 
+  @Column({ name: 'orders_made' })
+  ordersMade: number;
+
   @Column({ type: 'enum', enum: Role, default: Role.User, nullable: true })
   role: Role;
 

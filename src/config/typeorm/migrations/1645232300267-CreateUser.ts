@@ -13,6 +13,7 @@ export class CreateUser1645232300267 implements MigrationInterface {
         cpf varchar(11) NOT NULL UNIQUE,
         telephone varchar(255) NOT NULL,
         gender varchar(100),
+        orders_made int DEFAULT 0,
         role role_options DEFAULT 'user',
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,

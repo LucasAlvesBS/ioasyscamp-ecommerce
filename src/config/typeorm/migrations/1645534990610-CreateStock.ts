@@ -7,6 +7,7 @@ export class CreateStock1645534990610 implements MigrationInterface {
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         description text NOT NULL,
         available_quantity int DEFAULT 0,
+        expected_profit decimal(10, 2) DEFAULT 0.00,
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
         deleted_at timestamp

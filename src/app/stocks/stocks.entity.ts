@@ -21,6 +21,9 @@ export class StocksEntity {
   @Column({ name: 'available_quantity' })
   availableQuantity: number;
 
+  @Column({ name: 'expected_profit' })
+  expectedProfit: number;
+
   @OneToMany(() => OrdersEntity, (orders) => orders.stock)
   orders: OrdersEntity[];
 

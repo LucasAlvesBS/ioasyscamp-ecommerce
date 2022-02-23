@@ -7,7 +7,9 @@ export class CreateIncreaseFunction1645562070469 implements MigrationInterface {
       AS
       $$
       BEGIN
-        UPDATE stocks SET available_quantity = available_quantity + NEW.products_quantity
+        UPDATE stocks SET available_quantity = available_quantity + 1
+          WHERE id = NEW.stock_id;
+        UPDATE stocks SET expected_profit = expected_profit + NEW.price
           WHERE id = NEW.stock_id;
         RETURN NEW;
       END

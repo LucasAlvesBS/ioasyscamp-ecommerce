@@ -13,7 +13,7 @@ export class CreateProductDto {
   @IsNotEmpty()
   description: string;
 
-  @IsNotEmpty() // Colocar decorator IsEnum e a mensagem do helper
+  @IsNotEmpty()
   @IsEnum(Size, { message: MessageHelper.SIZE_VALID })
   size: Size;
 
@@ -27,10 +27,6 @@ export class CreateProductDto {
   @IsNotEmpty()
   @Min(0)
   price: number;
-
-  @IsNotEmpty()
-  @Min(0)
-  productsQuantity: number;
 
   @IsNotEmpty()
   stock: StocksEntity;

@@ -38,9 +38,6 @@ export class ProductsEntity {
   @Column()
   price: number;
 
-  @Column({ name: 'products_quantity' })
-  productsQuantity: number;
-
   @ManyToOne(() => DiscountsEntity, (discount) => discount.products, {
     onDelete: 'SET NULL', // olhar direito o SET NULL em discount
   })

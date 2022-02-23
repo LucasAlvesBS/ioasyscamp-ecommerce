@@ -19,7 +19,7 @@ import { AddressesService } from './addresses.service';
 import { CreateAddressDto } from './dto/create-address.dto';
 import { UpdateAddressDto } from './dto/update-address.dto';
 
-@Controller('api/v1/addresses')
+@Controller('ecommerce/addresses')
 export class AddressesController {
   constructor(private readonly addressService: AddressesService) {}
 

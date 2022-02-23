@@ -19,7 +19,7 @@ import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { OrdersService } from './orders.service';
 
-@Controller('api/v1/orders')
+@Controller('ecommerce/orders')
 @Roles(Role.User)
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class OrdersController {

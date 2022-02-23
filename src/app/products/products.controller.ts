@@ -19,7 +19,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductsService } from './products.service';
 
-@Controller('api/v1/products')
+@Controller('ecommerce/products')
 export class ProductsController {
   constructor(private readonly productService: ProductsService) {}
 
@@ -28,9 +28,9 @@ export class ProductsController {
     return await this.productService.findAllProducts();
   }
 
-  @Get(':name')
-  async findOneProduct(@Param('name') name: string) {
-    return this.productService.findOneProduct({ name });
+  @Get(':id')
+  async findOneProduct(@Param('id') id: string) {
+    return this.productService.findOneProduct({ id });
   }
 
   @Roles(Role.Admin)

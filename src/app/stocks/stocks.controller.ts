@@ -19,7 +19,7 @@ import { CreateStockDto } from './dto/create-stock.dto';
 import { UpdateStockDto } from './dto/update-stock.dto';
 import { StocksService } from './stocks.service';
 
-@Controller('api/v1/stocks')
+@Controller('ecommerce/stocks')
 export class StocksController {
   constructor(private readonly stockService: StocksService) {}
 

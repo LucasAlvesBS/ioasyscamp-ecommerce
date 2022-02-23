@@ -19,7 +19,7 @@ import { DiscountsService } from './discounts.service';
 import { CreateDiscountDto } from './dto/create-discount.dto';
 import { UpdateDiscountDto } from './dto/update-discount.dto';
 
-@Controller('api/vi/discounts')
+@Controller('ecommerce/discounts')
 export class DiscountsController {
   constructor(private readonly discountService: DiscountsService) {}
 

@@ -20,7 +20,7 @@ import { Role } from '../../config/enum/role.enum';
 import { UsersService } from './users.service';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 
-@Controller('api/v1/users')
+@Controller('ecommerce/users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 

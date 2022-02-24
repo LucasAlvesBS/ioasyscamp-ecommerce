@@ -8,6 +8,7 @@ import { ProductsModule } from './app/products/products.module';
 import { DiscountsModule } from './app/discounts/discounts.module';
 import { AddressesModule } from './app/addresses/addresses.module';
 import { StocksModule } from './app/stocks/stocks.module';
+import { CommentsModule } from './app/comments/comments.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { StocksModule } from './app/stocks/stocks.module';
     DiscountsModule,
     AddressesModule,
     StocksModule,
+    CommentsModule,
   ],
   controllers: [],
   providers: [],

@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class CreateProduct1645535117940 implements MigrationInterface {
+export class CreateProducts1645535117940 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
     CREATE TYPE size_options AS ENUM ('PP', 'P', 'M', 'G', 'GG', 'EGG');

@@ -1,9 +1,9 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class CreateDecreaseFunction1645549902895 implements MigrationInterface {
+export class PlaceOrdersFunction1645727606038 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-      CREATE OR REPLACE FUNCTION decrease_stock() RETURNS TRIGGER
+      CREATE OR REPLACE FUNCTION place_orders() RETURNS TRIGGER
       AS
       $$
       DECLARE
@@ -12,7 +12,7 @@ export class CreateDecreaseFunction1645549902895 implements MigrationInterface {
         SELECT available_quantity FROM stocks WHERE id = NEW.stock_id INTO quantity;
         IF quantity < NEW.order_quantity THEN
           RAISE EXCEPTION 'the stock does not have enough quantity to meet the demand';
-        ELSE	
+        ELSE  
           UPDATE stocks SET available_quantity = available_quantity - NEW.order_quantity
             WHERE id = NEW.stock_id;
         END IF;
@@ -23,6 +23,6 @@ export class CreateDecreaseFunction1645549902895 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query('DROP FUNCTION decrease_stock');
+    await queryRunner.query('DROP FUNCTION place_orders');
   }
 }

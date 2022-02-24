@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class CreateOrder1645535042974 implements MigrationInterface {
+export class CreateOrders1645535042974 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
     CREATE TYPE payment_options AS ENUM ('cash', 'debit_card', 'credit_card', 'pix');

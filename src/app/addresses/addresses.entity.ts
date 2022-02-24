@@ -1,3 +1,4 @@
+import { dataEncryption } from '../../helpers/crypto.helper';
 import {
   Column,
   CreateDateColumn,
@@ -15,19 +16,19 @@ export class AddressesEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: '50' })
+  @Column({ length: '255', transformer: dataEncryption })
   state: string;
 
-  @Column({ length: '50' })
+  @Column({ length: '255', transformer: dataEncryption })
   city: string;
 
-  @Column({ length: '255' })
+  @Column({ length: '255', transformer: dataEncryption })
   address1: string;
 
-  @Column({ length: '255', nullable: true })
+  @Column({ length: '255', nullable: true, transformer: dataEncryption })
   address2: string;
 
-  @Column({ name: 'zip_code' })
+  @Column({ name: 'zip_code', length: '255', transformer: dataEncryption })
   zipCode: string;
 
   @OneToOne(() => UsersEntity, (user) => user.address, { onDelete: 'CASCADE' })

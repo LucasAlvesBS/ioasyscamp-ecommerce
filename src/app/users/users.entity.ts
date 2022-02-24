@@ -14,6 +14,7 @@ import { OrdersEntity } from '../orders/orders.entity';
 import { AddressesEntity } from '../addresses/addresses.entity';
 import { Role } from '../../config/enum/role.enum';
 import { dataEncryption } from '../../helpers/crypto.helper';
+import { CommentsEntity } from '../comments/comments.entity';
 
 @Entity({ name: 'users' })
 export class UsersEntity {
@@ -53,6 +54,9 @@ export class UsersEntity {
 
   @OneToOne(() => AddressesEntity, (address) => address.user, { eager: true })
   address: AddressesEntity;
+
+  @OneToMany(() => CommentsEntity, (comments) => comments.user)
+  comments: CommentsEntity[];
 
   @OneToMany(() => OrdersEntity, (orders) => orders.user, { eager: true })
   orders: OrdersEntity[];

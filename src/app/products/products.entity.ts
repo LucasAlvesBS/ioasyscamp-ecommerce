@@ -6,6 +6,7 @@ import {
   JoinColumn,
   ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -14,6 +15,7 @@ import { OrdersEntity } from '../orders/orders.entity';
 import { Section } from '../../config/enum/section.enum';
 import { Size } from '../../config/enum/size.enum';
 import { StocksEntity } from '../stocks/stocks.entity';
+import { CommentsEntity } from '../comments/comments.entity';
 
 @Entity({ name: 'products' })
 export class ProductsEntity {
@@ -38,8 +40,11 @@ export class ProductsEntity {
   @Column()
   price: number;
 
+  @OneToMany(() => CommentsEntity, (comments) => comments.product)
+  comments: CommentsEntity[];
+
   @ManyToOne(() => DiscountsEntity, (discount) => discount.products, {
-    onDelete: 'SET NULL', // olhar direito o SET NULL em discount
+    onDelete: 'SET NULL',
   })
   @JoinColumn({ name: 'discount_id' })
   discount: DiscountsEntity;

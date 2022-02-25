@@ -9,6 +9,7 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  Req,
   UseGuards,
 } from '@nestjs/common';
 import { Roles } from 'src/auth/decorator/role.decorator';
@@ -19,23 +20,19 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { Role } from '../../config/enum/role.enum';
 import { UsersService } from './users.service';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
+import { verifyTokenId } from 'src/helpers/function.helper';
 
 @Controller('ecommerce/users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
-  @Roles(Role.Manager)
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Get()
-  async findAllUsers() {
-    return await this.userService.findAllUsers();
-  }
-
-  @Roles(Role.Admin, Role.User)
+  @Roles(Role.Admin, Role.Manager, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':id')
-  async getProfile(@Param('id') id: string) {
-    return await this.userService.getProfile({ id });
+  async getProfile(@Param('id') id: string, @Req() req: any) {
+    const user = await this.userService.getProfile({ id });
+    verifyTokenId(req.user, user);
+    return user;
   }
 
   @Post('register')
@@ -54,34 +51,45 @@ export class UsersController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post('register/manager')
   async createManager(@Body() body: CreateUserDto) {
-    return await this.userService.createAdmin(body);
+    return await this.userService.createManager(body);
   }
 
-  @Roles(Role.Admin, Role.User)
+  @Roles(Role.Admin, Role.Manager, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')
   async updateProfile(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateUserDto,
+    @Req() req: any,
   ) {
+    const user = await this.userService.getProfile({ id });
+    verifyTokenId(req.user, user);
     return await this.userService.updateUser(id, body);
   }
 
-  @Roles(Role.Admin, Role.User)
+  @Roles(Role.Admin, Role.Manager, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch('password/:id')
   async updateUserPassword(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateUserPasswordDto,
+    @Req() req: any,
   ) {
+    const user = await this.userService.getProfile({ id });
+    verifyTokenId(req.user, user);
     return await this.userService.updateUserPassword(id, body);
   }
 
-  @Roles(Role.Admin, Role.User, Role.Manager)
+  @Roles(Role.Admin, Role.Manager, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async adminDeleteUser(@Param('id', new ParseUUIDPipe()) id: string) {
+  async adminDeleteUser(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Req() req: any,
+  ) {
+    const user = await this.userService.getProfile({ id });
+    verifyTokenId(req.user, user);
     await this.userService.deleteUser(id);
   }
 }

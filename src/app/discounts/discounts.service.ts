@@ -1,5 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { MessageHelper } from 'src/helpers/message.helper';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { DiscountsEntity } from './discounts.entity';
 import { CreateDiscountDto } from './dto/create-discount.dto';
@@ -25,23 +30,35 @@ export class DiscountsService {
     try {
       return await this.discountRepository.findOneOrFail(conditions, options);
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
   }
 
   async createDiscount(data: CreateDiscountDto) {
-    const discount = this.discountRepository.create(data);
-    return await this.discountRepository.save(discount);
+    try {
+      const discount = this.discountRepository.create(data);
+      return await this.discountRepository.save(discount);
+    } catch (error) {
+      throw new BadRequestException(MessageHelper.BAD_REQUEST);
+    }
   }
 
   async updateDiscount(id: string, data: UpdateDiscountDto) {
-    const discount = await this.discountRepository.findOneOrFail({ id });
-    this.discountRepository.merge(discount, data);
-    return await this.discountRepository.save(discount);
+    try {
+      const discount = await this.discountRepository.findOneOrFail({ id });
+      this.discountRepository.merge(discount, data);
+      return await this.discountRepository.save(discount);
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 
   async deleteDiscount(id: string) {
-    await this.discountRepository.findOneOrFail({ id });
-    this.discountRepository.softDelete({ id });
+    try {
+      await this.discountRepository.findOneOrFail({ id });
+      this.discountRepository.softDelete({ id });
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 }

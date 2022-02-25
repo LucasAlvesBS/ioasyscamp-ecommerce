@@ -1,5 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { MessageHelper } from 'src/helpers/message.helper';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { AddressesEntity } from './addresses.entity';
 import { CreateAddressDto } from './dto/create-address.dto';
@@ -24,18 +29,30 @@ export class AddressesService {
   }
 
   async createAddress(data: CreateAddressDto) {
-    const address = this.addressRepository.create(data);
-    return await this.addressRepository.save(address);
+    try {
+      const address = this.addressRepository.create(data);
+      return await this.addressRepository.save(address);
+    } catch (error) {
+      throw new BadRequestException(MessageHelper.BAD_REQUEST);
+    }
   }
 
   async updateAddress(id: string, data: UpdateAddressDto) {
-    const address = await this.addressRepository.findOneOrFail({ id });
-    this.addressRepository.merge(address, data);
-    return await this.addressRepository.save(address);
+    try {
+      const address = await this.addressRepository.findOneOrFail({ id });
+      this.addressRepository.merge(address, data);
+      return await this.addressRepository.save(address);
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 
   async deleteAddress(id: string) {
-    await this.addressRepository.findOneOrFail({ id });
-    this.addressRepository.softDelete({ id });
+    try {
+      await this.addressRepository.findOneOrFail({ id });
+      this.addressRepository.softDelete({ id });
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 }

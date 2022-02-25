@@ -4,6 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { MessageHelper } from 'src/helpers/message.helper';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
@@ -23,7 +24,7 @@ export class OrdersService {
     try {
       return await this.orderRepository.findOneOrFail(conditions, options);
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
   }
 
@@ -33,18 +34,26 @@ export class OrdersService {
       order.orderQuantity = order.products.length;
       return await this.orderRepository.save(order);
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new BadRequestException(MessageHelper.BAD_REQUEST);
     }
   }
 
   async updateOrder(id: string, data: UpdateOrderDto) {
-    const discount = await this.orderRepository.findOneOrFail({ id });
-    this.orderRepository.merge(discount, data);
-    return await this.orderRepository.save(discount);
+    try {
+      const discount = await this.orderRepository.findOneOrFail({ id });
+      this.orderRepository.merge(discount, data);
+      return await this.orderRepository.save(discount);
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 
   async deleteOrder(id: string) {
-    await this.orderRepository.findOneOrFail({ id });
-    this.orderRepository.softDelete({ id });
+    try {
+      await this.orderRepository.findOneOrFail({ id });
+      this.orderRepository.softDelete({ id });
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 }

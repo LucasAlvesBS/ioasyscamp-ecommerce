@@ -1,5 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { MessageHelper } from 'src/helpers/message.helper';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -25,23 +30,35 @@ export class ProductsService {
     try {
       return await this.productRepository.findOneOrFail(conditions, options);
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
   }
 
   async createProduct(data: CreateProductDto) {
-    const product = this.productRepository.create(data);
-    return await this.productRepository.save(product);
+    try {
+      const product = this.productRepository.create(data);
+      return await this.productRepository.save(product);
+    } catch (error) {
+      throw new BadRequestException(MessageHelper.BAD_REQUEST);
+    }
   }
 
   async updateProduct(id: string, data: UpdateProductDto) {
-    const product = await this.productRepository.findOneOrFail({ id });
-    this.productRepository.merge(product, data);
-    return await this.productRepository.save(product);
+    try {
+      const product = await this.productRepository.findOneOrFail({ id });
+      this.productRepository.merge(product, data);
+      return await this.productRepository.save(product);
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 
   async deleteProduct(id: string) {
-    await this.productRepository.findOneOrFail({ id });
-    this.productRepository.softDelete({ id });
+    try {
+      await this.productRepository.findOneOrFail({ id });
+      this.productRepository.softDelete({ id });
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 }

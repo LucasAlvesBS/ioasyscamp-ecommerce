@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { MessageHelper } from 'src/helpers/message.helper';
 import { FindConditions, Repository } from 'typeorm';
 import { CreateStockDto } from './dto/create-stock.dto';
 import { UpdateStockDto } from './dto/update-stock.dto';
@@ -22,7 +23,7 @@ export class StocksService {
         select: ['id', 'description', 'availableQuantity'],
       });
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
   }
 
@@ -32,13 +33,21 @@ export class StocksService {
   }
 
   async updateStock(id: string, data: UpdateStockDto) {
-    const stock = await this.stockRepository.findOneOrFail({ id });
-    this.stockRepository.merge(stock, data);
-    return await this.stockRepository.save(stock);
+    try {
+      const stock = await this.stockRepository.findOneOrFail({ id });
+      this.stockRepository.merge(stock, data);
+      return await this.stockRepository.save(stock);
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 
   async deleteStock(id: string) {
-    await this.stockRepository.findOneOrFail({ id });
-    this.stockRepository.softDelete({ id });
+    try {
+      await this.stockRepository.findOneOrFail({ id });
+      this.stockRepository.softDelete({ id });
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 }

@@ -1,12 +1,8 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hashSync } from 'bcrypt';
 import { Role } from 'src/config/enum/role.enum';
+import { verifyDuplicate } from 'src/helpers/function.helper';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -31,7 +27,7 @@ export class UsersService {
         select: ['id', 'firstName', 'lastName', 'email', 'ordersMade', 'role'],
       });
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
   }
 
@@ -52,12 +48,7 @@ export class UsersService {
       email,
     });
 
-    if (verifyUser) {
-      throw new HttpException(
-        MessageHelper.EMAIL_INVALID,
-        HttpStatus.BAD_REQUEST,
-      );
-    }
+    verifyDuplicate(verifyUser);
 
     const user = this.userRepository.create(data);
     return await this.userRepository.save(user);
@@ -69,12 +60,8 @@ export class UsersService {
       email,
     });
 
-    if (verifyAdmin) {
-      throw new HttpException(
-        MessageHelper.EMAIL_INVALID,
-        HttpStatus.BAD_REQUEST,
-      );
-    }
+    verifyDuplicate(verifyAdmin);
+
     const admin: UsersEntity = this.userRepository.create(data);
     admin.role = Role.Admin;
     return await this.userRepository.save(admin);
@@ -86,36 +73,44 @@ export class UsersService {
       email,
     });
 
-    if (verifyManager) {
-      throw new HttpException(
-        MessageHelper.EMAIL_INVALID,
-        HttpStatus.BAD_REQUEST,
-      );
-    }
+    verifyDuplicate(verifyManager);
+
     const manager: UsersEntity = this.userRepository.create(data);
     manager.role = Role.Manager;
     return await this.userRepository.save(manager);
   }
 
   async updateUser(id: string, data: UpdateUserDto) {
-    const user = await this.userRepository.findOneOrFail({ id });
-    this.userRepository.merge(user, data);
-    return await this.userRepository.save(user);
+    try {
+      const user = await this.userRepository.findOneOrFail({ id });
+      this.userRepository.merge(user, data);
+      return await this.userRepository.save(user);
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 
   async updateUserPassword(id: string, data: UpdateUserPasswordDto) {
-    const user = await this.userRepository.findOneOrFail({ id });
-    const password = hashSync(data.password, 10);
-    data = {
-      ...data,
-      password,
-    };
-    this.userRepository.merge(user, data);
-    return await this.userRepository.save(user);
+    try {
+      const user = await this.userRepository.findOneOrFail({ id });
+      const password = hashSync(data.password, 10);
+      data = {
+        ...data,
+        password,
+      };
+      this.userRepository.merge(user, data);
+      return await this.userRepository.save(user);
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 
   async deleteUser(id: string) {
-    await this.userRepository.findOneOrFail({ id });
-    this.userRepository.softDelete({ id });
+    try {
+      await this.userRepository.findOneOrFail({ id });
+      this.userRepository.softDelete({ id });
+    } catch (error) {
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
+    }
   }
 }

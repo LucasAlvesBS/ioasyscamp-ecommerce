@@ -14,14 +14,13 @@ export const MessageHelper = {
   STATE_VALID: 'state must be only letters',
   CITY_VALID: 'city must be only letters',
   PAYMENT_VALID: 'payment must be cash, credit_card, debit_card or pix',
-  PRODUCT_NAME_VALID:
-    'product name must be only letters, hyphen, single quotes or numbers',
   COLOR_VALID: 'color must be only letters',
   SECTION_VALID: 'section must be masculine, feminine or kids',
   ZIP_CODE_VALID: 'zipCode must be only numbers',
   INFORMATIONS_INVALID: 'invalid informations',
   SIZE_VALID: 'size must be PP, P, M, G, GG or EGG',
   BAD_REQUEST:
-    'review the foreign key fields because some information is wrong',
-  NOT_FOUND: 'unfortunately, the requested parameter was not found',
+    'Review the foreign key fields because some information is wrong',
+  NOT_FOUND: 'Unfortunately, the requested parameter was not found',
+  FORBIDDEN: 'You do not have sufficient privileges to access the page',
 };

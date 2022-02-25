@@ -1,13 +1,11 @@
-import { IsEnum, IsNotEmpty, Matches, Min } from 'class-validator';
+import { IsEnum, IsNotEmpty, Min } from 'class-validator';
 import { StocksEntity } from 'src/app/stocks/stocks.entity';
 import { MessageHelper } from 'src/helpers/message.helper';
-import { RegExHelper } from 'src/helpers/regex.helper';
 import { Section } from '../../../config/enum/section.enum';
 import { Size } from '../../../config/enum/size.enum';
 
 export class CreateProductDto {
   @IsNotEmpty()
-  @Matches(RegExHelper.product, { message: MessageHelper.PRODUCT_NAME_VALID })
   name: string;
 
   @IsNotEmpty()

@@ -1,12 +1,10 @@
-import { IsEnum, IsOptional, Matches, Min } from 'class-validator';
+import { IsEnum, IsOptional, Min } from 'class-validator';
 import { Section } from '../../../config/enum/section.enum';
 import { Size } from '../../../config/enum/size.enum';
 import { MessageHelper } from 'src/helpers/message.helper';
-import { RegExHelper } from 'src/helpers/regex.helper';
 
 export class UpdateProductDto {
   @IsOptional()
-  @Matches(RegExHelper.product, { message: MessageHelper.PRODUCT_NAME_VALID })
   name: string;
 
   @IsOptional()

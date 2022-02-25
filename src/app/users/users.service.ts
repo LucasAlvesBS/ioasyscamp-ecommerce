@@ -17,10 +17,6 @@ export class UsersService {
     private readonly userRepository: Repository<UsersEntity>,
   ) {}
 
-  async findAllUsers() {
-    return await this.userRepository.find();
-  }
-
   async getProfile(conditions: FindConditions<UsersEntity>) {
     try {
       return await this.userRepository.findOneOrFail(conditions, {

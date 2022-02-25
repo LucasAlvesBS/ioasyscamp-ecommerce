@@ -9,16 +9,12 @@ import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
-import { OrdersModule } from 'src/app/orders/orders.module';
-import { ProductsModule } from 'src/app/products/products.module';
 import { RolesGuard } from './guards/roles.guard';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     UsersModule,
-    OrdersModule,
-    ProductsModule,
     PassportModule,
     JwtModule.register({
       privateKey: process.env.JWT_SECRET_KEY,

@@ -1,7 +1,7 @@
 import {
-  BadRequestException,
   Injectable,
   NotFoundException,
+  UnprocessableEntityException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MessageHelper } from 'src/helpers/message.helper';
@@ -34,7 +34,7 @@ export class OrdersService {
       order.orderQuantity = order.products.length;
       return await this.orderRepository.save(order);
     } catch (error) {
-      throw new BadRequestException(MessageHelper.BAD_REQUEST);
+      throw new UnprocessableEntityException(error.message);
     }
   }
 

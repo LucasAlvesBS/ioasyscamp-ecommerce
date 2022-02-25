@@ -19,6 +19,9 @@ export const MessageHelper = {
   COLOR_VALID: 'color must be only letters',
   SECTION_VALID: 'section must be masculine, feminine or kids',
   ZIP_CODE_VALID: 'zipCode must be only numbers',
-  EMAIL_INVALID: 'invalid informations',
+  INFORMATIONS_INVALID: 'invalid informations',
   SIZE_VALID: 'size must be PP, P, M, G, GG or EGG',
+  BAD_REQUEST:
+    'review the foreign key fields because some information is wrong',
+  NOT_FOUND: 'unfortunately, the requested parameter was not found',
 };

@@ -5,7 +5,7 @@ export class CreateDiscounts1645535080768 implements MigrationInterface {
     await queryRunner.query(`
     CREATE TABLE discounts (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        percentage decimal NOT NULL,
+        percentage decimal(10, 2) NOT NULL,
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,
         updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
         deleted_at timestamp 

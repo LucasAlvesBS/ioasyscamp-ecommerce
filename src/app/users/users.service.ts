@@ -47,7 +47,9 @@ export class UsersService {
     verifyDuplicate(verifyUser);
 
     const user = this.userRepository.create(data);
-    return await this.userRepository.save(user);
+    const savedUser = await this.userRepository.save(user);
+    savedUser.password = undefined;
+    return savedUser;
   }
 
   async createAdmin(data: CreateUserDto) {
@@ -60,7 +62,9 @@ export class UsersService {
 
     const admin: UsersEntity = this.userRepository.create(data);
     admin.role = Role.Admin;
-    return await this.userRepository.save(admin);
+    const savedAdmin = await this.userRepository.save(admin);
+    savedAdmin.password = undefined;
+    return savedAdmin;
   }
 
   async createManager(data: CreateUserDto) {
@@ -73,7 +77,9 @@ export class UsersService {
 
     const manager: UsersEntity = this.userRepository.create(data);
     manager.role = Role.Manager;
-    return await this.userRepository.save(manager);
+    const savedManager = await this.userRepository.save(manager);
+    savedManager.password = undefined;
+    return savedManager;
   }
 
   async updateUser(id: string, data: UpdateUserDto) {
@@ -95,7 +101,9 @@ export class UsersService {
         password,
       };
       this.userRepository.merge(user, data);
-      return await this.userRepository.save(user);
+      const updatedUser = await this.userRepository.save(user);
+      updatedUser.password = undefined;
+      return updatedUser;
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }

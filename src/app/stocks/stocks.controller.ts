@@ -23,15 +23,11 @@ import { StocksService } from './stocks.service';
 export class StocksController {
   constructor(private readonly stockService: StocksService) {}
 
-  @Roles(Role.Admin)
-  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   async findAllStocks() {
     return await this.stockService.findAllStocks();
   }
 
-  @Roles(Role.Admin)
-  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':id')
   async findOneStock(@Param('id', new ParseUUIDPipe()) id: string) {
     return await this.stockService.findOneStock({ id });

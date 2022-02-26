@@ -1,0 +1,1466 @@
+{
+	"info": {
+		"_postman_id": "7cec84b0-f14d-40c3-b1a4-da17f522c1e7",
+		"name": "ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "UserProfile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4Zjk0YTViNi1jOTJkLTRjNmUtOTQ0YS0xMzkxMmY3NzYwMGMiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTg0MDgzOCwiZXhwIjoxNjQ1ODQxMzE4fQ.dlnznZVW-nVqa2B6_Yq6d-wLWoa2um4jLZZLoObaz_k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/users/8f94a5b6-c92d-4c6e-944a-13912f77600c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"users",
+								"8f94a5b6-c92d-4c6e-944a-13912f77600c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MTg1NDY0YS1hNjAwLTQ4NGMtODA0Yy1iY2YzZDljYzlmM2MiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDUxMTI2MzIsImV4cCI6MTY0NTExMzExMn0.x-Dapv9AoggOBskAblFzFJHWx6UJQUICrDwCC8qrNu0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Lucas\",\r\n    \"lastName\": \"Alves\",\r\n    \"email\": \"lucas@hotmail.com\",\r\n    \"password\": \"Lucas@123\",\r\n    \"cpf\": \"31225722776\",\r\n    \"telephone\": \"79976991432\",\r\n    \"gender\": \"homem\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProfile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4Zjk0YTViNi1jOTJkLTRjNmUtOTQ0YS0xMzkxMmY3NzYwMGMiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgzNzgxNiwiZXhwIjoxNjQ1ODM4Mjk2fQ.Rz1EYvulD5T-eu9gsrhWposne6T51OV_AJfSIzREn7s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Tim\",\r\n    \"lastName\": \"Berners-Lee\",\r\n    \"email\": \"timbl@hotmail.com\",\r\n    \"password\": \"TimBL@123\",\r\n    \"cpf\": \"02157996833\",\r\n    \"telephone\": \"79999934129\",\r\n    \"gender\": \"masculine\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/users/8f94a5b6-c92d-4c6e-944a-13912f77600c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"users",
+								"8f94a5b6-c92d-4c6e-944a-13912f77600c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProfile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYTdhZGZjOC04MDFmLTQ5M2YtYWRlMi1kN2U5NGRhODEyMTkiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTY0NTgzODA3MywiZXhwIjoxNjQ1ODM4NTUzfQ.3H5IEAiYFxRPnti88lP6_PcQAGbVZjg0WstpjJVaAIQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/users/aa7adfc8-801f-493f-ade2-d7e94da81219",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"users",
+								"aa7adfc8-801f-493f-ade2-d7e94da81219"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePassword",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYTdhZGZjOC04MDFmLTQ5M2YtYWRlMi1kN2U5NGRhODEyMTkiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTY0NTgyMzY0MCwiZXhwIjoxNjQ1ODI0MTIwfQ.AnIABalmt5Cn81lMXTS-sMuyejA4paA2BZYRxHeC1oc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"LucasA@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/users/password/8f94a5b6-c92d-4c6e-944a-13912f77600c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"users",
+								"password",
+								"8f94a5b6-c92d-4c6e-944a-13912f77600c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterAdmin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZjllZTQwMi00MTAxLTQyNjEtODlhYy01YWUxMzRhNDY5OTEiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTY0NTc1MDM5MSwiZXhwIjoxNjQ1NzUwODcxfQ.QacIMDxj_FS6GRPUJ7wf7LtnlCNQ0aOTrBTB7TU1vu4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Maria\",\r\n    \"lastName\": \"Silvana\",\r\n    \"email\": \"maria@hotmail.com\",\r\n    \"password\": \"Maria@123\",\r\n    \"cpf\": \"34564456591\",\r\n    \"telephone\": \"7993671-1397\",\r\n    \"gender\": \"mulher\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/users/register/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"users",
+								"register",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterManager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZjI1ZjNhNS05YWZmLTQyZGQtYjkzNi1kYzM1YzkwMzlhNDciLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTY0NTgyMjkxMCwiZXhwIjoxNjQ1ODIzMzkwfQ.0Rsk6khUlU58bmldzisKp7enHnyxl17Q3r5r-Sxc5_k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Rosa\",\r\n    \"lastName\": \"Maria\",\r\n    \"email\": \"rosa@hotmail.com\",\r\n    \"password\": \"Rosa@123\",\r\n    \"cpf\": \"341864452291\",\r\n    \"telephone\": \"75936226547\",\r\n    \"gender\": \"mulher\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/users/register/manager",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"users",
+								"register",
+								"manager"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "CreateOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTc5MDUyNCwiZXhwIjoxNjQ1NzkxMDA0fQ.FLpcfNOV3xbm-piVRsfPvDreDUP1qNbtuKudDcCSBjg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment\": \"debit_card\",\r\n    \"user\": \"8f94a5b6-c92d-4c6e-944a-13912f77600c\",\r\n    \"stock\": \"a467e785-c9b0-47c7-b42a-502928e00aa0\",\r\n    \"products\": [\r\n        {\r\n            \"id\": \"7006aee9-a99f-40e1-8cdb-09d91780caa6\"\r\n        },\r\n        {\r\n            \"id\": \"7c9eb7dc-0dd9-48f4-981c-c1e12d20ae31\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindOneOrder",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgzODg4MSwiZXhwIjoxNjQ1ODM5MzYxfQ.p5pMAHfJKXEXcV_SBWheRNHCRUjfolg75uZpusJR6X8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/orders/4ae888e4-c917-44f9-876a-88f1e804479e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"orders",
+								"4ae888e4-c917-44f9-876a-88f1e804479e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgzODg4MSwiZXhwIjoxNjQ1ODM5MzYxfQ.p5pMAHfJKXEXcV_SBWheRNHCRUjfolg75uZpusJR6X8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment\": \"cash\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/orders/4ae888e4-c917-44f9-876a-88f1e804479e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"orders",
+								"4ae888e4-c917-44f9-876a-88f1e804479e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgyNTgwNCwiZXhwIjoxNjQ1ODI2Mjg0fQ.vMFCHnPSvwaVjXmfrwg824IT7G6CcjJGycJXisTnNg8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/orders/4ae888e4-c917-44f9-876a-88f1e804479e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"orders",
+								"4ae888e4-c917-44f9-876a-88f1e804479e"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "FindAllProducts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindOneProduct",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/products/7006aee9-a99f-40e1-8cdb-09d91780caa6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"products",
+								"7006aee9-a99f-40e1-8cdb-09d91780caa6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YTQ5ZTUzZC1lZDdjLTQ1OTAtOWViYS0wYzZhYmU2ZmM2Y2QiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDU3OTEwNDQsImV4cCI6MTY0NTc5MTUyNH0.QzntvDrHfCgqAY9Ac2t8WZ9WNc4G8WlCN2jJyh_QnsM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"jacket\",\r\n    \"description\": \"fashion releases\",\r\n    \"size\": \"M\",\r\n    \"color\": \"black\",\r\n    \"section\": \"masculine\",\r\n    \"price\": 99.99,\r\n    \"stock\": \"a467e785-c9b0-47c7-b42a-502928e00aa0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZjVjZDFkZC0yYTA3LTQzY2UtODUyZi1lZDA4ZTZjZjU2YzIiLCJpYXQiOjE2NDQ5MjcwNjMsImV4cCI6MTY0NDkyNzU0M30.Zl7moisBzL-AZNYOGy94z5ekYcWQmFQXQtNpuCiEiTk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"shirt\",\r\n    \"description\": \"summer fashion\",\r\n    \"size\": \"G\",\r\n    \"color\": \"blue\",\r\n    \"section\": \"feminine\",\r\n    \"price\": 80.99 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/products/7006aee9-a99f-40e1-8cdb-09d91780caa6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"products",
+								"7006aee9-a99f-40e1-8cdb-09d91780caa6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgyNTgwNCwiZXhwIjoxNjQ1ODI2Mjg0fQ.vMFCHnPSvwaVjXmfrwg824IT7G6CcjJGycJXisTnNg8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/products/7006aee9-a99f-40e1-8cdb-09d91780caa6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"products",
+								"7006aee9-a99f-40e1-8cdb-09d91780caa6"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZjVjZDFkZC0yYTA3LTQzY2UtODUyZi1lZDA4ZTZjZjU2YzIiLCJpYXQiOjE2NDQ4Nzc5NDgsImV4cCI6MTY0NDg3ODE4OH0.Jk_pYfLxAoHEII7EMuUHqMtnQkkRuIOT0pMyOfmg9Nw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"lucas@hotmail.com\",\r\n    \"password\": \"Lucas@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Addresses",
+			"item": [
+				{
+					"name": "RegisterAddress",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ZmJlOGI1Ni1iM2M4LTQ4ZGQtYjg4Mi00OTJlMTU5NmRmMjAiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTcxMDIyMSwiZXhwIjoxNjQ1NzEwNzAxfQ.FqWZIDI5nDyRDQrkSeThP0GSYNAp2pBLqFZJerIEzFA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\": \"Sergipe\",\r\n    \"city\": \"Aracaju\",\r\n    \"address1\": \"Rua B\",\r\n    \"address2\": \"Rua Laranjeiras\",\r\n    \"zipCode\": \"11597871\",\r\n    \"user\": \"8f94a5b6-c92d-4c6e-944a-13912f77600c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/addresses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAddress",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzNWVkMjFiYi0yNmNhLTRiYjQtYjdlOC0wYjc2N2Q4MmUxNmQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDUzMTA1MzAsImV4cCI6MTY0NTMxMTAxMH0.stKakEPRmm7WwqvIm6nVXnhyYT7KRGj5trld8jIYKXo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/addresses/8352b1e7-d215-4f17-bb91-70c325f5d614",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"addresses",
+								"8352b1e7-d215-4f17-bb91-70c325f5d614"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAddress",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ZmJlOGI1Ni1iM2M4LTQ4ZGQtYjg4Mi00OTJlMTU5NmRmMjAiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTcxMDIyMSwiZXhwIjoxNjQ1NzEwNzAxfQ.FqWZIDI5nDyRDQrkSeThP0GSYNAp2pBLqFZJerIEzFA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/addresses/8352b1e7-d215-4f17-bb91-70c325f5d614",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"addresses",
+								"8352b1e7-d215-4f17-bb91-70c325f5d614"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateAddress",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgyNTgwNCwiZXhwIjoxNjQ1ODI2Mjg0fQ.vMFCHnPSvwaVjXmfrwg824IT7G6CcjJGycJXisTnNg8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\": \"Sergipe\",\r\n    \"city\": \"Itabaiana\",\r\n    \"address1\": \"Rua C\",\r\n    \"address2\": \"Rua D\",\r\n    \"zipCode\": \"41522891\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/addresses/8352b1e7-d215-4f17-bb91-70c325f5d614",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"addresses",
+								"8352b1e7-d215-4f17-bb91-70c325f5d614"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discounts",
+			"item": [
+				{
+					"name": "RegisterDiscount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YTQ5ZTUzZC1lZDdjLTQ1OTAtOWViYS0wYzZhYmU2ZmM2Y2QiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDU4Mzk4NzQsImV4cCI6MTY0NTg0MDM1NH0.4KXj2WgR82ZIwKR9zJtLPDezAnVrqR3LaU9qpYZkbUs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"percentage\": 50,\r\n    \"products\": [\r\n        {\r\n            \"id\": \"7006aee9-a99f-40e1-8cdb-09d91780caa6\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/discounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"discounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateDiscount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgyNTgwNCwiZXhwIjoxNjQ1ODI2Mjg0fQ.vMFCHnPSvwaVjXmfrwg824IT7G6CcjJGycJXisTnNg8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"percentage\": 50,\r\n    \"products\": [\r\n        {\r\n            \"id\": \"7c9eb7dc-0dd9-48f4-981c-c1e12d20ae31\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/discounts/5563d2c5-5883-4f7a-86f2-3b5a8180ee8d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"discounts",
+								"5563d2c5-5883-4f7a-86f2-3b5a8180ee8d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAllDiscounts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/discounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"discounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteDiscount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgyNTgwNCwiZXhwIjoxNjQ1ODI2Mjg0fQ.vMFCHnPSvwaVjXmfrwg824IT7G6CcjJGycJXisTnNg8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/discounts/5563d2c5-5883-4f7a-86f2-3b5a8180ee8d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"discounts",
+								"5563d2c5-5883-4f7a-86f2-3b5a8180ee8d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindOneDiscount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/discounts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"discounts",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stocks",
+			"item": [
+				{
+					"name": "FindAllStocks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/stocks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"stocks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateStock",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZTExNzAwYS0wOTBkLTRjM2MtOWJmNy02ZmZjZTM1MzZiNWEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDU0ODQxNjYsImV4cCI6MTY0NTQ4NDY0Nn0.v3dCTPX_9qTYjq0S4kcwZK-sOLPAyy9ZRnnrLZrwMr0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"E-commerce management\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/stocks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"stocks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindOneStock",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/stocks/a467e785-c9b0-47c7-b42a-502928e00aa0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"stocks",
+								"a467e785-c9b0-47c7-b42a-502928e00aa0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateStock",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgyNTgwNCwiZXhwIjoxNjQ1ODI2Mjg0fQ.vMFCHnPSvwaVjXmfrwg824IT7G6CcjJGycJXisTnNg8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"fashion e-commerce management\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/stocks/a467e785-c9b0-47c7-b42a-502928e00aa0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"stocks",
+								"a467e785-c9b0-47c7-b42a-502928e00aa0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteStock",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgyNTgwNCwiZXhwIjoxNjQ1ODI2Mjg0fQ.vMFCHnPSvwaVjXmfrwg824IT7G6CcjJGycJXisTnNg8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/stocks/a467e785-c9b0-47c7-b42a-502928e00aa0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"stocks",
+								"a467e785-c9b0-47c7-b42a-502928e00aa0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "CreateComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4Zjk0YTViNi1jOTJkLTRjNmUtOTQ0YS0xMzkxMmY3NzYwMGMiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTg0MDgzOCwiZXhwIjoxNjQ1ODQxMzE4fQ.dlnznZVW-nVqa2B6_Yq6d-wLWoa2um4jLZZLoObaz_k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Amei essa jaqueta!\",\r\n    \"user\": \"8f94a5b6-c92d-4c6e-944a-13912f77600c\",\r\n    \"product\": \"7c9eb7dc-0dd9-48f4-981c-c1e12d20ae31\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAllComments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgyNTgwNCwiZXhwIjoxNjQ1ODI2Mjg0fQ.vMFCHnPSvwaVjXmfrwg824IT7G6CcjJGycJXisTnNg8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/comments/152bd72d-6146-48bf-98c0-7a2c11d178b2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"comments",
+								"152bd72d-6146-48bf-98c0-7a2c11d178b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindOneComment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/comments/152bd72d-6146-48bf-98c0-7a2c11d178b2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"comments",
+								"152bd72d-6146-48bf-98c0-7a2c11d178b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzlhNDhjNS00YWZhLTQ0MDUtODc1OC05ODE3ZDdlNDYwZjIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY0NTgyNTgwNCwiZXhwIjoxNjQ1ODI2Mjg0fQ.vMFCHnPSvwaVjXmfrwg824IT7G6CcjJGycJXisTnNg8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Amei essa jaqueta! Além de bonita, é de excelente qualidade.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ecommerce/comments/152bd72d-6146-48bf-98c0-7a2c11d178b2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ecommerce",
+								"comments",
+								"152bd72d-6146-48bf-98c0-7a2c11d178b2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

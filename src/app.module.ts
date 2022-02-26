@@ -9,6 +9,8 @@ import { DiscountsModule } from './app/discounts/discounts.module';
 import { AddressesModule } from './app/addresses/addresses.module';
 import { StocksModule } from './app/stocks/stocks.module';
 import { CommentsModule } from './app/comments/comments.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -24,6 +26,10 @@ import { CommentsModule } from './app/comments/comments.module';
       logging: false,
       entities: [__dirname + '/**/*.entity{.js,.ts}'],
     } as TypeOrmModuleOptions),
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10,
+    }),
     UsersModule,
     AuthModule,
     OrdersModule,
@@ -34,6 +40,11 @@ import { CommentsModule } from './app/comments/comments.module';
     CommentsModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class AppModule {}

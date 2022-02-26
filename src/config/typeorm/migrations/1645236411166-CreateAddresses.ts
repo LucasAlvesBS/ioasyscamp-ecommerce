@@ -7,7 +7,7 @@ export class CreateAddresses1645236411166 implements MigrationInterface {
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         state varchar(255) NOT NULL,
         city varchar(255) NOT NULL,
-        address1 varchar(255) NOT NULL UNIQUE,
+        address1 varchar(255) NOT NULL,
         address2 varchar(255),
         zip_code varchar(255) NOT NULL,
         user_id UUID,

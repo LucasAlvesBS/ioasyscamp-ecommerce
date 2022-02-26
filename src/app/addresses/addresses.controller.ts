@@ -28,8 +28,8 @@ export class AddressesController {
   @Roles(Role.Admin, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':id')
-  async findOneAddres(@Param('id') id: string) {
-    return await this.addressService.findOneAddress({ id });
+  async findAddress(@Param('id') id: string) {
+    return await this.addressService.findAddress({ id });
   }
 
   @Roles(Role.Admin, Role.User)

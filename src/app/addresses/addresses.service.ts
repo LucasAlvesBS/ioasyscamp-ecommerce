@@ -17,7 +17,7 @@ export class AddressesService {
     private readonly addressRepository: Repository<AddressesEntity>,
   ) {}
 
-  async findOneAddress(
+  async findAddress(
     conditions: FindConditions<AddressesEntity>,
     options?: FindOneOptions<AddressesEntity>,
   ) {

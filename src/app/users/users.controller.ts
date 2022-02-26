@@ -21,7 +21,9 @@ import { Role } from '../../config/enum/role.enum';
 import { UsersService } from './users.service';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { verifyTokenId } from 'src/helpers/function.helper';
+import { SkipThrottle } from '@nestjs/throttler';
 
+@SkipThrottle(true)
 @Controller('ecommerce/users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
@@ -35,6 +37,7 @@ export class UsersController {
     return user;
   }
 
+  @SkipThrottle(false)
   @Post('register')
   async createProfile(@Body() body: CreateUserDto) {
     return await this.userService.createUser(body);

@@ -21,7 +21,7 @@ import { APP_GUARD } from '@nestjs/core';
       port: process.env.DB_PORT,
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
+      database: process.env.DB_DATABASE_NAME,
       synchronize: false,
       logging: false,
       entities: [__dirname + '/**/*.entity{.js,.ts}'],

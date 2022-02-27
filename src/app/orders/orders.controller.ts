@@ -33,6 +33,7 @@ export class OrdersController {
   }
 
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   async createOrder(@Body() body: CreateOrderDto) {
     return await this.orderService.createOrder(body);
   }

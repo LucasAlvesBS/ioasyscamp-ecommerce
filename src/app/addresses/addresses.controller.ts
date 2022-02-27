@@ -25,21 +25,22 @@ import { UpdateAddressDto } from './dto/update-address.dto';
 export class AddressesController {
   constructor(private readonly addressService: AddressesService) {}
 
-  @Roles(Role.Admin, Role.User)
+  @Roles(Role.Admin, Role.Manager, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':id')
   async findAddress(@Param('id') id: string) {
     return await this.addressService.findAddress({ id });
   }
 
-  @Roles(Role.Admin, Role.User)
+  @Roles(Role.Admin, Role.Manager, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   async createAddress(@Body() body: CreateAddressDto) {
     return await this.addressService.createAddress(body);
   }
 
-  @Roles(Role.Admin, Role.User)
+  @Roles(Role.Admin, Role.Manager, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')
   async updateAddress(
@@ -49,7 +50,7 @@ export class AddressesController {
     return await this.addressService.updateAddress(id, body);
   }
 
-  @Roles(Role.Admin, Role.User)
+  @Roles(Role.Admin, Role.Manager, Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)

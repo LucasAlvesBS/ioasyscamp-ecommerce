@@ -38,6 +38,7 @@ export class StocksController {
   @Roles(Role.Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   async createStock(@Body() body: CreateStockDto) {
     return await this.stockService.createStock(body);
   }

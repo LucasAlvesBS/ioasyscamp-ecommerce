@@ -39,6 +39,7 @@ export class UsersController {
 
   @SkipThrottle(false)
   @Post('register')
+  @HttpCode(HttpStatus.CREATED)
   async createProfile(@Body() body: CreateUserDto) {
     return await this.userService.createUser(body);
   }
@@ -46,6 +47,7 @@ export class UsersController {
   @Roles(Role.Manager)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post('register/admin')
+  @HttpCode(HttpStatus.CREATED)
   async createAdmin(@Body() body: CreateUserDto) {
     return await this.userService.createAdmin(body);
   }
@@ -53,6 +55,7 @@ export class UsersController {
   @Roles(Role.Manager)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post('register/manager')
+  @HttpCode(HttpStatus.CREATED)
   async createManager(@Body() body: CreateUserDto) {
     return await this.userService.createManager(body);
   }

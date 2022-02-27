@@ -38,6 +38,7 @@ export class DiscountsController {
   @Roles(Role.Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   async createDiscount(@Body() body: CreateDiscountDto) {
     return await this.discountService.createDiscount(body);
   }

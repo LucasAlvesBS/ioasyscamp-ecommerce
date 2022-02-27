@@ -38,6 +38,7 @@ export class CommentsController {
   @Roles(Role.User)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   async createComment(@Body() body: CreateCommentDto) {
     return await this.commentService.createComment(body);
   }

@@ -38,6 +38,7 @@ export class ProductsController {
   @Roles(Role.Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   async createProduct(@Body() body: CreateProductDto) {
     return await this.productService.createProduct(body);
   }

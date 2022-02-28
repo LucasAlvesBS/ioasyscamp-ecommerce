@@ -4,6 +4,7 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { verifyProductsQuantity } from 'src/helpers/function.helper';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { FindConditions, FindOneOptions, Repository } from 'typeorm';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -31,7 +32,8 @@ export class OrdersService {
   async createOrder(data: CreateOrderDto) {
     try {
       const order = this.orderRepository.create(data);
-      order.orderQuantity = order.products.length;
+      order.productsQuantity = order.products.length;
+      verifyProductsQuantity(order.productsQuantity);
       return await this.orderRepository.save(order);
     } catch (error) {
       throw new UnprocessableEntityException(error.message);

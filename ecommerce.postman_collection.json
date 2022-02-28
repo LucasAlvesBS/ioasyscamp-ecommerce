@@ -54,16 +54,6 @@
 				{
 					"name": "RegisterUser",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MTg1NDY0YS1hNjAwLTQ4NGMtODA0Yy1iY2YzZDljYzlmM2MiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDUxMTI2MzIsImV4cCI6MTY0NTExMzExMn0.x-Dapv9AoggOBskAblFzFJHWx6UJQUICrDwCC8qrNu0",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -156,7 +146,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/ecommerce/users/aa7adfc8-801f-493f-ade2-d7e94da81219",
+							"raw": "http://localhost:3000/ecommerce/users/8f94a5b6-c92d-4c6e-944a-13912f77600c",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -165,7 +155,7 @@
 							"path": [
 								"ecommerce",
 								"users",
-								"aa7adfc8-801f-493f-ade2-d7e94da81219"
+								"8f94a5b6-c92d-4c6e-944a-13912f77600c"
 							]
 						}
 					},
@@ -220,7 +210,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZjllZTQwMi00MTAxLTQyNjEtODlhYy01YWUxMzRhNDY5OTEiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTY0NTc1MDM5MSwiZXhwIjoxNjQ1NzUwODcxfQ.QacIMDxj_FS6GRPUJ7wf7LtnlCNQ0aOTrBTB7TU1vu4",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjMjEzODRjNC03ZmYxLTRkOGItYTQxZS1lZTYyM2YzNGMxMGYiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTY0NjA1ODQxMCwiZXhwIjoxNjQ2MDU4ODkwfQ.fv1xsiI-EE9VOLu59FDfj5c5JdZlx-L-A-3CO7-5x7s",
 									"type": "string"
 								}
 							]
@@ -229,7 +219,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Maria\",\r\n    \"lastName\": \"Silvana\",\r\n    \"email\": \"maria@hotmail.com\",\r\n    \"password\": \"Maria@123\",\r\n    \"cpf\": \"34564456591\",\r\n    \"telephone\": \"7993671-1397\",\r\n    \"gender\": \"mulher\"\r\n}",
+							"raw": "{\r\n    \"firstName\": \"Maria\",\r\n    \"lastName\": \"Silvana\",\r\n    \"email\": \"maria@hotmail.com\",\r\n    \"password\": \"Maria@123\",\r\n    \"cpf\": \"34564456591\",\r\n    \"telephone\": \"79936711397\",\r\n    \"gender\": \"mulher\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1079,7 +1069,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/ecommerce/discounts/",
+							"raw": "http://localhost:3000/ecommerce/discounts/5563d2c5-5883-4f7a-86f2-3b5a8180ee8d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1088,7 +1078,7 @@
 							"path": [
 								"ecommerce",
 								"discounts",
-								""
+								"5563d2c5-5883-4f7a-86f2-3b5a8180ee8d"
 							]
 						}
 					},

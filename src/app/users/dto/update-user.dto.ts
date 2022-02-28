@@ -1,10 +1,8 @@
-import { PartialType } from '@nestjs/mapped-types';
 import { IsEmail, IsOptional, Matches } from 'class-validator';
 import { MessageHelper } from 'src/helpers/message.helper';
 import { RegExHelper } from 'src/helpers/regex.helper';
-import { CreateUserDto } from './create-user.dto';
 
-export class UpdateUserDto extends PartialType(CreateUserDto) {
+export class UpdateUserDto {
   @IsOptional()
   @Matches(RegExHelper.name, { message: MessageHelper.FIRST_NAME_VALID })
   firstName: string;

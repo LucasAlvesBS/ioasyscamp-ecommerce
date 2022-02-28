@@ -21,7 +21,7 @@ Obs.: é necessário ter um banco de dados criado para rodar a aplicação.
 Por questões de segurança, foi definido algumas variáveis de ambiente:
 
 ```bash
-# Porta da API (caso o valor não seja preenchido, a aplicação rodará na porta 3000)
+# Porta da API (caso o campo não seja preenchido, a aplicação rodará na porta 3000). Para evitar ter que ficar alterando a porta no Postman, recomenda-se deixar esse campo sem valor.
 PORT=                             
 
 # Conexão com o banco de dados

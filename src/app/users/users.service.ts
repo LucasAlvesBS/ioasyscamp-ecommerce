@@ -86,7 +86,9 @@ export class UsersService {
     try {
       const user = await this.userRepository.findOneOrFail({ id });
       this.userRepository.merge(user, data);
-      return await this.userRepository.save(user);
+      const updatedUser = await this.userRepository.save(user);
+      updatedUser.password = undefined;
+      return updatedUser;
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
@@ -101,9 +103,9 @@ export class UsersService {
         password,
       };
       this.userRepository.merge(user, data);
-      const updatedUser = await this.userRepository.save(user);
-      updatedUser.password = undefined;
-      return updatedUser;
+      const updatedUserPassword = await this.userRepository.save(user);
+      updatedUserPassword.password = undefined;
+      return updatedUserPassword;
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
     }

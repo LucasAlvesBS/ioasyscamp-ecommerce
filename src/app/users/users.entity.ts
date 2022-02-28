@@ -21,11 +21,7 @@ export class UsersEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({
-    name: 'first_name',
-    length: '255',
-    transformer: dataEncryption,
-  })
+  @Column({ name: 'first_name', length: '255', transformer: dataEncryption })
   firstName: string;
 
   @Column({ name: 'last_name', length: '255', transformer: dataEncryption })

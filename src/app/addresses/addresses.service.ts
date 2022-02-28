@@ -24,7 +24,7 @@ export class AddressesService {
     try {
       return await this.addressRepository.findOneOrFail(conditions, options);
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new NotFoundException(MessageHelper.NOT_FOUND);
     }
   }
 

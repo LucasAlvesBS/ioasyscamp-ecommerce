@@ -1,4 +1,4 @@
-# Projeto E-commerce
+# Projeto Fashion E-commerce
 
 Projeto realizado, na trilha de back-end, como desafio final da 1ª fase de imersão do ioasys Camp 2022.
 

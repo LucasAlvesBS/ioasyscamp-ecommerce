@@ -23,10 +23,10 @@ export class OrdersEntity {
   @Column({ type: 'enum', enum: Payment, nullable: false })
   payment: Payment;
 
-  @Column({ name: 'order_quantity' })
-  orderQuantity: number;
+  @Column({ name: 'products_quantity' })
+  productsQuantity: number;
 
-  @ManyToOne(() => UsersEntity, (user) => user.orders, { onDelete: 'CASCADE' })
+  @ManyToOne(() => UsersEntity, (user) => user.orders)
   @JoinColumn({ name: 'user_id' })
   user: UsersEntity;
 

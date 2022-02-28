@@ -7,7 +7,7 @@ export class CreateOrders1645535042974 implements MigrationInterface {
     CREATE TABLE orders (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         payment payment_options NOT NULL,
-        order_quantity int NOT NULL,
+        products_quantity int NOT NULL,
         user_id UUID,
         stock_id UUID,
         created_at timestamp DEFAULT CURRENT_TIMESTAMP,

@@ -10,10 +10,10 @@ export class PlaceOrdersFunction1645727606038 implements MigrationInterface {
         quantity int;
       BEGIN
         SELECT available_quantity FROM stocks WHERE id = NEW.stock_id INTO quantity;
-        IF quantity < NEW.order_quantity THEN
+        IF quantity < NEW.products_quantity THEN
           RAISE EXCEPTION 'the stock does not have enough quantity to meet the demand';
         ELSE  
-          UPDATE stocks SET available_quantity = available_quantity - NEW.order_quantity
+          UPDATE stocks SET available_quantity = available_quantity - NEW.products_quantity
             WHERE id = NEW.stock_id;
         END IF;
         RETURN NEW;

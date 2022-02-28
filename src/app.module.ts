@@ -10,18 +10,22 @@ import { AddressesModule } from './app/addresses/addresses.module';
 import { StocksModule } from './app/stocks/stocks.module';
 import { CommentsModule } from './app/comments/comments.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
+import { WinstonModule } from 'nest-winston';
+import { winstonTransport } from './config/transports/winston.transport';
+import { LoggerInterceptor } from './config/interceptors/logger.interceptor';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    WinstonModule.forRoot(winstonTransport),
     TypeOrmModule.forRoot({
       type: process.env.DB_CONNECTION,
       host: process.env.DB_HOST,
       port: process.env.DB_PORT,
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE_NAME,
+      database: process.env.DB_DATABASE,
       synchronize: false,
       logging: false,
       entities: [__dirname + '/**/*.entity{.js,.ts}'],
@@ -44,6 +48,10 @@ import { APP_GUARD } from '@nestjs/core';
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggerInterceptor,
     },
   ],
 })

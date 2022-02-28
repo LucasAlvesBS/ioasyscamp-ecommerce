@@ -14,13 +14,15 @@ export class StocksService {
   ) {}
 
   async findAllStocks() {
-    return await this.stockRepository.find();
+    return await this.stockRepository.find({
+      select: ['id', 'description', 'availableQuantity', 'expectedProfit'],
+    });
   }
 
   async findOneStock(conditions: FindConditions<StocksEntity>) {
     try {
       return await this.stockRepository.findOneOrFail(conditions, {
-        select: ['id', 'description', 'availableQuantity'],
+        select: ['id', 'description', 'availableQuantity', 'expectedProfit'],
       });
     } catch (error) {
       throw new NotFoundException(MessageHelper.NOT_FOUND);
